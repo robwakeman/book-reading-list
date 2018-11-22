@@ -9,6 +9,16 @@ const bookListDeleteButtons = document.getElementsByClassName(
 const hideBooks = document.getElementById('hide-books-input');
 let bookTitles = document.querySelectorAll('.book-list__title');
 
+// add event listeners
+search.addEventListener('keyup', searchBooks);
+
+addBookForm.addEventListener('submit', addBook);
+
+bookList.addEventListener('click', deleteBook);
+
+addHighLighting();
+
+// function declarations
 function addBook(e) {
   e.preventDefault();
   const newBookTitle = document.getElementById('addBookInput').value;
@@ -36,13 +46,7 @@ function deleteBook(e) {
   }
 }
 
-search.addEventListener('keyup', searchBooks);
 
-addBookForm.addEventListener('submit', addBook);
-
-bookList.addEventListener('click', deleteBook);
-
-addHighLighting();
 
 function searchBooks() {
   let searchTerm = search.value.toLowerCase();
