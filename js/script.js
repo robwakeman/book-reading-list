@@ -11,14 +11,29 @@ let bookTitles = document.querySelectorAll('.book-list__title');
 
 // add event listeners
 search.addEventListener('keyup', searchBooks);
-
 addBookForm.addEventListener('submit', addBook);
-
 bookList.addEventListener('click', deleteBook);
-
+hideBooks.addEventListener('change', hideBooksHandler);
 addHighLighting();
 
 // function declarations
+function searchBooks() {
+  let searchTerm = search.value.toLowerCase();
+
+  if (searchTerm) {
+    for (let i = 0; i < bookTitles.length; i++) {
+      bookTitles[i].parentElement.style.display = 'none';
+      if (bookTitles[i].textContent.toLowerCase().indexOf(searchTerm) != -1) {
+        bookTitles[i].parentElement.style.display = 'flex';
+      }
+    }
+  } else {
+    for (let i = 0; i < bookTitles.length; i++) {
+      bookTitles[i].parentElement.style.display = 'flex';
+    }
+  }
+}
+
 function addBook(e) {
   e.preventDefault();
   const newBookTitle = document.getElementById('addBookInput').value;
@@ -40,31 +55,6 @@ function addBook(e) {
   addHighLighting();
 }
 
-function deleteBook(e) {
-  if (e.target.className === 'book-list__delete') {
-    e.target.parentElement.remove();
-  }
-}
-
-
-
-function searchBooks() {
-  let searchTerm = search.value.toLowerCase();
-
-  if (searchTerm) {
-    for (let i = 0; i < bookTitles.length; i++) {
-      bookTitles[i].parentElement.style.display = 'none';
-      if (bookTitles[i].textContent.toLowerCase().indexOf(searchTerm) != -1) {
-        bookTitles[i].parentElement.style.display = 'flex';
-      }
-    }
-  } else {
-    for (let i = 0; i < bookTitles.length; i++) {
-      bookTitles[i].parentElement.style.display = 'flex';
-    }
-  }
-}
-
 function clearSearch() {
   search.value = '';
   for (let i = 0; i < bookTitles.length; i++) {
@@ -83,7 +73,11 @@ function addHighLighting() {
   }
 }
 
-hideBooks.addEventListener('change', hideBooksHandler);
+function deleteBook(e) {
+  if (e.target.className === 'book-list__delete') {
+    e.target.parentElement.remove();
+  }
+}
 
 function hideBooksHandler() {
   if (hideBooks.checked) {
