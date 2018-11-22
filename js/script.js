@@ -1,5 +1,6 @@
 'use strict';
 
+// save elements into variables
 const search = document.getElementById('search');
 const addBookForm = document.getElementById('addBookForm');
 const bookList = document.querySelector('.book-list');
@@ -9,15 +10,8 @@ const bookListDeleteButtons = document.getElementsByClassName(
 const hideBooks = document.getElementById('hide-books-input');
 let bookTitles = document.querySelectorAll('.book-list__title');
 
-// add event listeners
-search.addEventListener('keyup', searchBooks);
-addBookForm.addEventListener('submit', addBook);
-bookList.addEventListener('click', deleteBook);
-hideBooks.addEventListener('change', hideBooksHandler);
-addHighLighting();
-
-// function declarations
-function searchBooks() {
+// functions as function expressions (must be declared before being called)
+const searchBooks = () => {
   let searchTerm = search.value.toLowerCase();
 
   if (searchTerm) {
@@ -32,9 +26,9 @@ function searchBooks() {
       bookTitles[i].parentElement.style.display = 'flex';
     }
   }
-}
+};
 
-function addBook(e) {
+const addBook = e => {
   e.preventDefault();
   const newBookTitle = document.getElementById('addBookInput').value;
 
@@ -53,16 +47,16 @@ function addBook(e) {
 
   // re-invoke highlight hover states
   addHighLighting();
-}
+};
 
-function clearSearch() {
+const clearSearch = () => {
   search.value = '';
   for (let i = 0; i < bookTitles.length; i++) {
     bookTitles[i].parentElement.style.display = 'flex';
   }
-}
+};
 
-function addHighLighting() {
+const addHighLighting = () => {
   for (let deleteButton of bookListDeleteButtons) {
     deleteButton.addEventListener('mouseenter', e =>
       e.target.parentElement.classList.toggle('book-list__item--is-hovered')
@@ -71,18 +65,25 @@ function addHighLighting() {
       e.target.parentElement.classList.toggle('book-list__item--is-hovered')
     );
   }
-}
+};
 
-function deleteBook(e) {
+const deleteBook = e => {
   if (e.target.className === 'book-list__delete') {
     e.target.parentElement.remove();
   }
-}
+};
 
-function hideBooksHandler() {
+const hideBooksHandler = () => {
   if (hideBooks.checked) {
     bookList.style.display = 'none';
   } else {
     bookList.style.display = 'block';
   }
-}
+};
+
+// add event listeners
+search.addEventListener('keyup', searchBooks);
+addBookForm.addEventListener('submit', addBook);
+bookList.addEventListener('click', deleteBook);
+hideBooks.addEventListener('change', hideBooksHandler);
+addHighLighting();
