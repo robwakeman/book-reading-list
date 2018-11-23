@@ -1,4 +1,4 @@
-# book-reading-list
+# Book Reading List
 
 ## About
 
