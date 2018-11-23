@@ -12,10 +12,11 @@ This app is just for the purposes me testing out coding practices:
   - CSS uses BEM methodology.
   - Flexbox is used for some layout.
   - The project is too small to justify the use of Sass.
+  - Autoprefixer is not used as this app is not for production
 - **JavaScript**
   - The app uses native JavaScript to manipulate the DOM.
   - ES6 (ES2015) is used e.g. const, let, arrow functions, for..of loops.
-  - Babel is not used to compile the JavaScript down to ES5 as this is not for production.
+  - Babel is not used to compile the JavaScript down to ES5 as this app is not for production.
 
 The book list is static and hardcoded.
 
