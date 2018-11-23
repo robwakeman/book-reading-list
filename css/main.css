@@ -13,7 +13,7 @@ body {
   padding: 1rem;
 }
 
-/* global */
+/*  Global Styles */
 input,
 input[type='submit'],
 button {
@@ -26,21 +26,20 @@ button {
   border-radius: 5px;
 }
 
-/* blocks */
+/*----------------------- Header Styles ------------------------------ */
 
-/* header */
 .header {
   background: #eee;
   display: grid;
   justify-items: center;
 }
 
-.header__h1 {
+.h1 {
   font-size: 2rem;
   margin-block-end: 2px;
 }
 
-.header__h2 {
+.h2 {
   font-size: 1rem;
   font-weight: normal;
 }
@@ -54,7 +53,7 @@ button {
   border-radius: 5px;
 }
 
-/* book-container */
+/*----------------------- Book List Styles ------------------------------ */
 
 .book-container {
   padding: 1rem;
@@ -96,6 +95,8 @@ button {
   background: black;
 }
 
+/*----------------------- Hide Books Styles ------------------------------ */
+
 .hide-books {
   display: flex;
   justify-content: center;
@@ -118,6 +119,8 @@ button {
 .hide-books__input {
   margin-right: 6px;
 }
+
+/*----------------------- Add Book Styles ------------------------------ */
 
 .add-book__inner {
   width: 100%;
