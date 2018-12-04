@@ -20,7 +20,7 @@ This app is a demo of some of my coding practices:
   - The app uses native JavaScript to manipulate the DOM.
   - ES6 (ES2015) is used e.g. const, let, arrow functions, for..of loops.
   - Babel is not used to compile the JavaScript down to ES5 as this app is not for production.
-    Minification of JavaScript is not used as this app is not for production.
+  - Minification of JavaScript is not used as this app is not for production.
 
 The book list is static and hardcoded.
 
