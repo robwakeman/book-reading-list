@@ -4,7 +4,9 @@
 
 Book reading list app.
 
-This app is just for the purposes me testing out coding practices:
+[Demo](http://robwakemandev.com/book-reading-list/)
+
+This app is a demo of some of my coding practices:
 
 - **HTML**
   - Form elements contain ARIA attributes for accessibility.
