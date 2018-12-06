@@ -12,7 +12,7 @@ This app is a demo of some of my coding practices:
   - Form elements contain ARIA attributes for accessibility.
 - **CSS**
   - CSS uses BEM methodology.
-  - Flexbox is used for some layout.
+  - Flexbox and Grid is used for some layout.
   - The project is too small to justify the use of Sass.
   - Autoprefixer is not used as this app is not for production.
   - Minification of CSS is not used as this app is not for production.
