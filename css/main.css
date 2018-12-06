@@ -101,7 +101,6 @@ button {
 .hide-books {
   display: flex;
   justify-content: center;
-  width: 60%;
   margin: 0 auto;
   margin-block-end: 1rem;
 }
