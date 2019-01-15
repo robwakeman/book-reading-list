@@ -13,45 +13,46 @@ let bookTitles = document.querySelectorAll('.book-list__title');
 // get data from Open Library API
 const bookListApi = $('.book-list-api');
 let booksOpenLibHtml = '';
+const getBooks = () => {
+  $.getJSON(
+    'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
+    function(data) {
+      const booksFromApi = data.works; //array
+      // console.log(booksFromApi.length);
+      // console.table(booksFromApi);
 
-$.getJSON(
-  'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
-  function(data) {
-    const booksFromApi = data.works; //array
-    // console.log(booksFromApi.length);
-    // console.table(booksFromApi);
-
-    if (booksFromApi.length) {
-      // there are books
-      const booksOpenLib = booksFromApi.map(book => {
-        return {
-          bookOpenLibId: book.cover_edition_key,
-          bookOpenLibTitle: book.title
-        };
-      });
-
-      // console.log(booksOpenLib);
-
-      if (booksOpenLib.length) {
-        booksOpenLibHtml = booksOpenLib.map(book => {
-          return (
-            '<li id="' +
-            book.bookOpenLibId +
-            '">' +
-            book.bookOpenLibTitle +
-            '</li>'
-          );
+      if (booksFromApi.length) {
+        // there are books
+        const booksOpenLib = booksFromApi.map(book => {
+          return {
+            bookOpenLibId: book.cover_edition_key,
+            bookOpenLibTitle: book.title
+          };
         });
-      }
 
-      bookListApi.append(booksOpenLibHtml);
-    } else {
-      // we don't have data - show markup to explain that
+        // console.log(booksOpenLib);
+
+        if (booksOpenLib.length) {
+          booksOpenLibHtml = booksOpenLib.map(book => {
+            return (
+              '<li id="' +
+              book.bookOpenLibId +
+              '">' +
+              book.bookOpenLibTitle +
+              '</li>'
+            );
+          });
+        }
+
+        bookListApi.append(booksOpenLibHtml);
+      } else {
+        // we don't have data - show markup to explain that
+      }
     }
-  }
-).fail(function() {
-  console.log(jqxhr.responseText);
-});
+  ).fail(function() {
+    console.log(jqxhr.responseText);
+  });
+};
 
 // functions as function expressions (must be declared before being called)
 const searchBooks = () => {
@@ -123,6 +124,9 @@ const hideBooksHandler = () => {
     bookList.style.display = 'block';
   }
 };
+
+// get books
+getBooks();
 
 // add event listeners
 search.addEventListener('keyup', searchBooks);
