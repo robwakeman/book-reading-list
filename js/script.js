@@ -15,37 +15,39 @@ const bookListApi = $('.book-list-api');
 let booksOpenLibHtml = '';
 
 $.getJSON(
-  'http://openlibraryxxx.org/subjects/crime.json?published_in=1800-1880&limit=5',
+  'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
   function(data) {
-    // if (data) {
-    // console.table(data.works);
-    console.log(data.works);
+    const booksFromApi = data.works; //array
+    // console.log(booksFromApi.length);
+    // console.table(booksFromApi);
 
-    const booksOpenLib = data.works.map(book => {
-      return {
-        bookOpenLibId: book.cover_edition_key,
-        bookOpenLibTitle: book.title
-      };
-    });
-
-    // console.log(booksOpenLib);
-
-    if (booksOpenLib.length) {
-      booksOpenLibHtml = booksOpenLib.map(book => {
-        return (
-          '<li id="' +
-          book.bookOpenLibId +
-          '">' +
-          book.bookOpenLibTitle +
-          '</li>'
-        );
+    if (booksFromApi.length) {
+      // there are books
+      const booksOpenLib = booksFromApi.map(book => {
+        return {
+          bookOpenLibId: book.cover_edition_key,
+          bookOpenLibTitle: book.title
+        };
       });
-    }
 
-    bookListApi.append(booksOpenLibHtml);
-    // } else {
-    // we don't have data - show markup to explain that
-    // }
+      // console.log(booksOpenLib);
+
+      if (booksOpenLib.length) {
+        booksOpenLibHtml = booksOpenLib.map(book => {
+          return (
+            '<li id="' +
+            book.bookOpenLibId +
+            '">' +
+            book.bookOpenLibTitle +
+            '</li>'
+          );
+        });
+      }
+
+      bookListApi.append(booksOpenLibHtml);
+    } else {
+      // we don't have data - show markup to explain that
+    }
   }
 ).fail(function() {
   console.log(jqxhr.responseText);
