@@ -12,11 +12,15 @@ let bookTitles = document.querySelectorAll('.book-list__title');
 
 // get data from Open Library API
 const bookListApi = $('.book-list-api');
+let booksOpenLibHtml = '';
 
 $.getJSON(
-  'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
+  'http://openlibraryxxx.org/subjects/crime.json?published_in=1800-1880&limit=5',
   function(data) {
+    // if (data) {
     // console.table(data.works);
+    console.log(data.works);
+
     const booksOpenLib = data.works.map(book => {
       return {
         bookOpenLibId: book.cover_edition_key,
@@ -27,7 +31,7 @@ $.getJSON(
     // console.log(booksOpenLib);
 
     if (booksOpenLib.length) {
-      var booksOpenLibHtml = booksOpenLib.map(book => {
+      booksOpenLibHtml = booksOpenLib.map(book => {
         return (
           '<li id="' +
           book.bookOpenLibId +
@@ -39,8 +43,13 @@ $.getJSON(
     }
 
     bookListApi.append(booksOpenLibHtml);
+    // } else {
+    // we don't have data - show markup to explain that
+    // }
   }
-);
+).fail(function() {
+  console.log(jqxhr.responseText);
+});
 
 // functions as function expressions (must be declared before being called)
 const searchBooks = () => {
