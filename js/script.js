@@ -86,7 +86,7 @@ const addBook = e => {
   clearSearch();
 
   bookList.innerHTML += `
-    <li class="book-list__item">
+    <li id="" class="book-list__item">
     <span class="book-list__title">${newBookTitle}</span>
     <button class="book-list__delete">Delete</button>
     </li>
