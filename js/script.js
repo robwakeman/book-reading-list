@@ -10,6 +10,38 @@ const bookListDeleteButtons = document.getElementsByClassName(
 const hideBooks = document.getElementById('hide-books-input');
 let bookTitles = document.querySelectorAll('.book-list__title');
 
+// get data from Open Library API
+const bookListApi = $('.book-list-api');
+
+$.getJSON(
+  'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
+  function(data) {
+    // console.table(data.works);
+    const booksOpenLib = data.works.map(book => {
+      return {
+        bookOpenLibId: book.cover_edition_key,
+        bookOpenLibTitle: book.title
+      };
+    });
+
+    // console.log(booksOpenLib);
+
+    if (booksOpenLib.length) {
+      var booksOpenLibHtml = booksOpenLib.map(book => {
+        return (
+          '<li id="' +
+          book.bookOpenLibId +
+          '">' +
+          book.bookOpenLibTitle +
+          '</li>'
+        );
+      });
+    }
+
+    bookListApi.append(booksOpenLibHtml);
+  }
+);
+
 // functions as function expressions (must be declared before being called)
 const searchBooks = () => {
   let searchTerm = search.value.toLowerCase();
