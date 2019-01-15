@@ -10,10 +10,10 @@ const bookListHardcoded = document.querySelector(
 const bookListApi = $('.book-list.book-list-api');
 const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
-);
+); // returns HTMLCollection (live)
 const hideBooks = document.getElementById('hide-books-input');
-// let bookTitles = document.querySelectorAll('.book-list__title'); // returns static NodeList
-let bookTitles = '';
+
+const bookTitles = document.getElementsByClassName('book-list__title');
 
 // declare booksOpenLibHtml variable
 let booksOpenLibHtml = '';
@@ -52,7 +52,6 @@ const getBooksOL = () => {
         }
 
         bookListApi.append(booksOpenLibHtml);
-        getBookTitles();
       } else {
         // we don't have data - show markup to explain that
       }
@@ -60,11 +59,6 @@ const getBooksOL = () => {
   ).fail(function() {
     console.log(jqxhr.responseText);
   });
-};
-
-const getBookTitles = () => {
-  bookTitles = document.querySelectorAll('.book-list__title'); // returns static NodeList
-  return bookTitles;
 };
 
 // functions as function expressions (must be declared before being called)
@@ -140,9 +134,6 @@ const hideBooksHandler = () => {
 
 // get books from Open Library
 getBooksOL();
-
-// get book titles in
-getBookTitles();
 
 // add event listeners
 search.addEventListener('keyup', searchBooks);
