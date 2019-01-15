@@ -3,7 +3,7 @@
 // save elements into variables
 const search = document.getElementById('search');
 const addBookForm = document.getElementById('addBookForm');
-const bookList = document.querySelector('.book-list');
+const bookList = document.querySelector('.book-list.book-list-hardcoded');
 const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
 );
@@ -14,6 +14,7 @@ let bookTitles = document.querySelectorAll('.book-list__title');
 const bookListApi = $('.book-list.book-list-api');
 let booksOpenLibHtml = '';
 const getBooks = () => {
+  bookList.style.display = 'none';
   $.getJSON(
     'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
     function(data) {
