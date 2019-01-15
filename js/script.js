@@ -1,20 +1,25 @@
 'use strict';
 
-// save elements into variables
+// save elements into identifiers and variables
 const search = document.getElementById('search');
 const addBookForm = document.getElementById('addBookForm');
-const bookList = document.querySelector('.book-list.book-list-hardcoded');
+const bookList = document.querySelector('.book-list');
+const bookListHardcoded = document.querySelector(
+  '.book-list.book-list-hardcoded'
+);
+const bookListApi = $('.book-list.book-list-api');
 const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
 );
 const hideBooks = document.getElementById('hide-books-input');
 let bookTitles = document.querySelectorAll('.book-list__title');
 
-// get data from Open Library API
-const bookListApi = $('.book-list.book-list-api');
+// declare booksOpenLibHtml variable
 let booksOpenLibHtml = '';
+
+// get data from Open Library API
 const getBooks = () => {
-  bookList.style.display = 'none';
+  bookListHardcoded.style.display = 'none';
   $.getJSON(
     'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
     function(data) {
