@@ -12,13 +12,14 @@ const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
 );
 const hideBooks = document.getElementById('hide-books-input');
-let bookTitles = document.querySelectorAll('.book-list__title');
+// let bookTitles = document.querySelectorAll('.book-list__title'); // returns static NodeList
+let bookTitles = '';
 
 // declare booksOpenLibHtml variable
 let booksOpenLibHtml = '';
 
 // get data from Open Library API
-const getBooks = () => {
+const getBooksOL = () => {
   bookListHardcoded.style.display = 'none';
   $.getJSON(
     'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
@@ -51,6 +52,7 @@ const getBooks = () => {
         }
 
         bookListApi.append(booksOpenLibHtml);
+        getBookTitles();
       } else {
         // we don't have data - show markup to explain that
       }
@@ -58,6 +60,11 @@ const getBooks = () => {
   ).fail(function() {
     console.log(jqxhr.responseText);
   });
+};
+
+const getBookTitles = () => {
+  bookTitles = document.querySelectorAll('.book-list__title'); // returns static NodeList
+  return bookTitles;
 };
 
 // functions as function expressions (must be declared before being called)
@@ -131,8 +138,11 @@ const hideBooksHandler = () => {
   }
 };
 
-// get books
-getBooks();
+// get books from Open Library
+getBooksOL();
+
+// get book titles in
+getBookTitles();
 
 // add event listeners
 search.addEventListener('keyup', searchBooks);
