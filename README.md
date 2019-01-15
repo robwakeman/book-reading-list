@@ -25,7 +25,8 @@ The original book list is static and hardcoded. It is hidden when the Open Libra
 
 ## TODO
 
-Set up a select field to opt between hardcoded book list and Open Library API book list
+- Set up a select field to opt between hardcoded book list and Open Library API book list.
+- Add fallbacks for CSS Grid
 
 ## License
 
