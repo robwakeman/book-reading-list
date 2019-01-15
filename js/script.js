@@ -11,7 +11,7 @@ const hideBooks = document.getElementById('hide-books-input');
 let bookTitles = document.querySelectorAll('.book-list__title');
 
 // get data from Open Library API
-const bookListApi = $('.book-list-api');
+const bookListApi = $('.book-list.book-list-api');
 let booksOpenLibHtml = '';
 const getBooks = () => {
   $.getJSON(
@@ -37,9 +37,9 @@ const getBooks = () => {
             return (
               '<li id="' +
               book.bookOpenLibId +
-              '">' +
+              '" class="book-list__item"><span class="book-list__title">' +
               book.bookOpenLibTitle +
-              '</li>'
+              '</span><button class="book-list__delete">Delete</button></li>'
             );
           });
         }
