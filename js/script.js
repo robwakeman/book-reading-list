@@ -93,9 +93,6 @@ const addBook = e => {
     </li>
     `;
 
-  // update bookTitles NodeList, because new book added
-  bookTitles = document.querySelectorAll('.book-list__title');
-
   // re-invoke highlight hover states
   addHighLighting();
 };

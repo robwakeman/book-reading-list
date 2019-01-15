@@ -14,20 +14,18 @@ This app is a demo of some of my coding practices:
   - CSS uses BEM methodology.
   - Flexbox and Grid is used for some layout.
   - The project is too small to justify the use of Sass.
-  - Autoprefixer is not used as this app is not for production.
-  - Minification of CSS is not used as this app is not for production.
   - CSS logical properties are used in place of physical counterparts for testing. If in production, I would consider using them only in combination with this [PostCSS plugin](https://github.com/jonathantneal/postcss-logical)
+  - If used in a production context, Autoprefixer and minification would be used.
 - **JavaScript**
-  - The app uses native JavaScript to manipulate the DOM.
+  - The app uses both native JavaScript and jQuery.
   - ES6 (ES2015) is used e.g. const, let, arrow functions, for..of loops.
-  - Babel is not used to compile the JavaScript down to ES5 as this app is not for production.
-  - Minification of JavaScript is not used as this app is not for production.
+  - If used in a production context, Babel would be used to compile the JavaScript down to ES5 and then optimised using a tool like UglifyJS
 
-The book list is static and hardcoded.
+The original book list is static and hardcoded. It is hidden when the Open Library API call is made, which then populates the list.
 
 ## TODO
 
-Replace static list of books with JSON data from a suitable API.
+Set up a select field to opt between hardcoded book list and Open Library API book list
 
 ## License
 
