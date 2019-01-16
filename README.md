@@ -15,7 +15,7 @@ This app is a demo of some of my coding practices:
   - Flexbox and Grid is used for some layout.
   - The project is too small to justify the use of Sass.
   - CSS logical properties are used in place of physical counterparts for testing. If in production, I would consider using them only in combination with this [PostCSS plugin](https://github.com/jonathantneal/postcss-logical)
-  - If used in a production context, Autoprefixer and minification would be used.
+  - If used in a production context, Autoprefixer and minification would be used. Ensure Autoprefixer Grid settings are set to true either via JS or (control comments) [https://css-tricks.com/css-grid-in-ie-duplicate-area-names-now-supported/#article-header-id-10]
 - **JavaScript**
   - The app uses both native JavaScript and jQuery.
   - ES6 (ES2015) is used e.g. const, let, arrow functions, for..of loops.
@@ -27,7 +27,7 @@ The original book list is static and hardcoded. It is hidden when the Open Libra
 ## TODO
 
 - Set up a select field to opt between hardcoded book list and Open Library API book list.
-- Add fallbacks for CSS Grid
+- No need to add IE11 fallbacks for CSS Grid with the CSS as it stands. Only consider fallbacks if Grid features are used that aren't supported by IE11 e.g. grid-auto-rows and span
 
 ## License
 
