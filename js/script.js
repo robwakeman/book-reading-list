@@ -52,6 +52,7 @@ const getBooksOL = () => {
         }
 
         bookListApi.append(booksOpenLibHtml);
+        addHighLighting();
       } else {
         // we don't have data - show markup to explain that
       }

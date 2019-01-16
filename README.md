@@ -20,6 +20,7 @@ This app is a demo of some of my coding practices:
   - The app uses both native JavaScript and jQuery.
   - ES6 (ES2015) is used e.g. const, let, arrow functions, for..of loops.
   - If used in a production context, Babel would be used to compile the JavaScript down to ES5 and then optimised using a tool like UglifyJS
+  - Any changed data is not persistent.
 
 The original book list is static and hardcoded. It is hidden when the Open Library API call is made, which then populates the list.
 
