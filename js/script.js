@@ -18,12 +18,16 @@ const bookTitles = document.getElementsByClassName('book-list__title');
 
 searchMessage.classList.add('search__message--is-hidden');
 
+// flag to determine which book source to use - hardcoded or API
+let bookSource = 'api';
+
 // declare booksOpenLibHtml variable
 let booksOpenLibHtml = '';
 
 // get data from Open Library API
 const getBooksOL = () => {
   bookListHardcoded.style.display = 'none';
+
   $.getJSON(
     'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
     function(data) {
@@ -134,7 +138,11 @@ const hideBooksHandler = () => {
 };
 
 // get books from Open Library
-getBooksOL();
+if (bookSource === 'api') {
+  getBooksOL();
+} else if (bookSource === 'hardcoded') {
+  // disable api and show hardcoded list - TODO
+}
 
 // add event listeners
 search.addEventListener('keyup', searchBooks);
