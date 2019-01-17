@@ -30,6 +30,7 @@ button {
 /*----------------------- Header Styles ------------------------------ */
 
 .header {
+  padding: 1rem;
   background: #eee;
   display: grid;
   justify-items: center;
@@ -48,12 +49,18 @@ button {
 /*----------------------- Search Styles ------------------------------ */
 
 .search {
+  width: 100%;
   margin-block-end: 20px;
+}
+
+@media (min-width: 600px) {
+  .search {
+    width: 60%;
+  }
 }
 
 .search__field {
   width: 100%;
-
   padding: 0.5rem;
   border: none;
   border: 1px solid #ddd;
@@ -65,6 +72,7 @@ button {
   background: rgba(128, 0, 128, 0.192);
   padding: 15px 20px;
   border-radius: 5px;
+  display: none;
 }
 
 .search__message.search__message--is-visible {
