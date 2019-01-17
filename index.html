@@ -13,18 +13,26 @@
       <header class="header">
         <h1 class="h1">Book Reading List</h1>
         <h2 class="h2">Manage the list with add, edit, delete</h2>
-        <input
-          type="text"
-          name="search"
-          id="search"
-          class="header__search"
-          placeholder="Search books..."
-          aria-label="Search books"
-        />
+        <div class="search">
+          <form class="search__form">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              class="search__field"
+              placeholder="Search books..."
+              aria-label="Search books"
+            />
+          </form>
+          <p class="search__message">
+            No books found. Please try searching for something else.
+          </p>
+        </div>
       </header>
       <div class="book-container">
         <div class="books">
           <h3 class="h3">Books to Read</h3>
+
           <ul class="book-list book-list-api"></ul>
           <ul class="book-list book-list-hardcoded">
             <li id="HC1" class="book-list__item">
