@@ -11,6 +11,7 @@ const bookList = document.querySelector('.book-list');
 const bookListHardcoded = document.querySelector(
   '.book-list.book-list-hardcoded'
 );
+
 // get book titles for use in search - set initial value to hardcoded and reset in api call if made
 let bookTitles = document.querySelectorAll(
   '.book-list-hardcoded .book-list__title'

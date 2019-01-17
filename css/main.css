@@ -73,7 +73,6 @@ button {
   background: rgba(128, 0, 128, 0.192);
   padding: 15px 20px;
   border-radius: 5px;
-  /* display: none; */
 }
 
 .search__message.search__message--is-hidden {
