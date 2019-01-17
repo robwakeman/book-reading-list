@@ -2,6 +2,7 @@
 
 // save elements into identifiers and variables
 const search = document.getElementById('search');
+const searchMessage = document.querySelector('.search__message');
 const addBookForm = document.getElementById('addBookForm');
 const bookList = document.querySelector('.book-list');
 const bookListHardcoded = document.querySelector(
@@ -14,6 +15,8 @@ const bookListDeleteButtons = document.getElementsByClassName(
 const hideBooks = document.getElementById('hide-books-input');
 
 const bookTitles = document.getElementsByClassName('book-list__title');
+
+searchMessage.classList.add('search__message--is-hidden');
 
 // declare booksOpenLibHtml variable
 let booksOpenLibHtml = '';
