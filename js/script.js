@@ -22,8 +22,6 @@ const bookListDeleteButtons = document.getElementsByClassName(
 ); // returns HTMLCollection (live)
 const hideBooks = document.getElementById('hide-books-input');
 
-searchMessage.classList.add('search__message--is-hidden');
-
 // declare booksOpenLibHtml variable
 let booksOpenLibHtml = '';
 
