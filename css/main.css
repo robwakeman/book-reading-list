@@ -50,6 +50,7 @@ button {
 
 .search {
   width: 100%;
+  margin-block-start: 20px;
   margin-block-end: 20px;
 }
 
