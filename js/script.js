@@ -1,5 +1,8 @@
 'use strict';
 
+// flag to determine which book source to use - hardcoded or api
+let bookSource = 'api';
+
 // save elements into identifiers and variables
 const search = document.getElementById('search');
 const searchMessage = document.querySelector('.search__message');
@@ -8,18 +11,17 @@ const bookList = document.querySelector('.book-list');
 const bookListHardcoded = document.querySelector(
   '.book-list.book-list-hardcoded'
 );
+// get book titles for use in search - set initial value to hardcoded and reset in api call if made
+let bookTitles = document.querySelectorAll(
+  '.book-list-hardcoded .book-list__title'
+);
 const bookListApi = $('.book-list.book-list-api');
 const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
 ); // returns HTMLCollection (live)
 const hideBooks = document.getElementById('hide-books-input');
 
-const bookTitles = document.getElementsByClassName('book-list__title');
-
 searchMessage.classList.add('search__message--is-hidden');
-
-// flag to determine which book source to use - hardcoded or API
-let bookSource = 'api';
 
 // declare booksOpenLibHtml variable
 let booksOpenLibHtml = '';
@@ -37,6 +39,7 @@ const getBooksOL = () => {
 
       if (booksFromApi.length) {
         // there are books
+
         const booksOpenLib = booksFromApi.map(book => {
           return {
             bookOpenLibId: book.cover_edition_key,
@@ -60,6 +63,10 @@ const getBooksOL = () => {
 
         bookListApi.append(booksOpenLibHtml);
         addHighLighting();
+        // get book titles for use in search
+        bookTitles = document.querySelectorAll(
+          '.book-list-api .book-list__title'
+        );
       } else {
         // we don't have data - show markup to explain that
       }
