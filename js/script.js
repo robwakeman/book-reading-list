@@ -1,23 +1,22 @@
 'use strict';
 
-// flag to determine which book source to use - hardcoded or api
+// flag to determine which book source to use - 'hardcoded' or 'api'
 let bookSource = 'api';
 
-// save elements into identifiers and variables
+// save elements into constants
 const search = document.getElementById('search');
 const searchMessage = document.querySelector('.search__message');
 const addBookForm = document.getElementById('addBookForm');
 const bookList = document.querySelector('.book-list');
-const bookListHardcoded = $('.book-list.book-list-hardcoded');
-
-let bookTitles;
-const bookListApi = $('.book-list.book-list-api');
+const bookListHardcoded = $('.book-list.book-list-hardcoded'); // jQuery
+const bookListApi = $('.book-list.book-list-api'); // jQuery
 const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
 ); // returns live HTMLCollection
 const hideBooks = document.getElementById('hide-books-input');
 
-// declare booksOpenLibHtml
+// declare other variables
+let bookTitles;
 let booksOpenLibHtml;
 
 // get data from Open Library API
