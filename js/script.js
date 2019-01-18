@@ -8,8 +8,8 @@ const search = document.getElementById('search');
 const searchMessage = document.querySelector('.search__message');
 const addBookForm = document.getElementById('addBookForm');
 const bookList = document.querySelector('.book-list');
-const bookListHardcoded = $('.book-list.book-list-hardcoded'); // jQuery
-const bookListApi = $('.book-list.book-list-api'); // jQuery
+const bookListHardcoded = $('#book-list-hardcoded'); // jQuery
+const bookListApi = $('#book-list-api'); // jQuery
 const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
 ); // returns live HTMLCollection
@@ -54,7 +54,7 @@ const getBooksOL = () => {
           });
         }
 
-        bookListApi.append(booksOpenLibHtml);
+        bookListApi.append(booksOpenLibHtml); // jQuery
         addHighLighting();
       } else {
         // we don't have data - show markup to explain that
