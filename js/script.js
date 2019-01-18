@@ -8,8 +8,10 @@ const search = document.getElementById('search');
 const searchMessage = document.querySelector('.search__message');
 const addBookForm = document.getElementById('addBookForm');
 const bookList = document.querySelector('.book-list');
-const bookListHardcoded = $('#book-list-hardcoded'); // jQuery
-const bookListApi = $('#book-list-api'); // jQuery
+// const bookListHardcoded = $('#book-list-hardcoded'); // jQuery
+const bookListHardcoded = document.getElementById('book-list-hardcoded');
+// const bookListApi = $('#book-list-api'); // jQuery
+const bookListApi = document.getElementById('book-list-api');
 const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
 ); // returns live HTMLCollection
@@ -21,7 +23,8 @@ let booksOpenLibHtml;
 
 // get data from Open Library API
 const getBooksOL = () => {
-  bookListHardcoded.css('display', 'none'); //jQuery
+  // bookListHardcoded.css('display', 'none'); //jQuery
+  bookListHardcoded.style.display = 'none';
 
   $.getJSON(
     'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
@@ -54,7 +57,10 @@ const getBooksOL = () => {
           });
         }
 
-        bookListApi.append(booksOpenLibHtml); // jQuery
+        // bookListApi.append(booksOpenLibHtml); // jQuery
+        // booksOpenLibHtml is an array, so need to convert it to a string with join
+        // DocumentFragment is probably a more performant way of appending the li elements to the DOM - to consider switching to that
+        bookListApi.innerHTML += booksOpenLibHtml.join('');
         addHighLighting();
       } else {
         // we don't have data - show markup to explain that
@@ -145,12 +151,14 @@ const hideBooksHandler = () => {
 // get books from Open Library
 if (bookSource === 'api') {
   // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
-  bookTitles = bookListApi[0].getElementsByClassName('book-list__title');
+  // bookTitles = bookListApi[0].getElementsByClassName('book-list__title');
+  bookTitles = bookListApi.getElementsByClassName('book-list__title');
   getBooksOL();
 } else if (bookSource === 'hardcoded') {
   // disable api and show hardcoded list - TODO
   // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
-  bookTitles = bookListHardcoded[0].getElementsByClassName('book-list__title');
+  // bookTitles = bookListHardcoded[0].getElementsByClassName('book-list__title');
+  bookTitles = bookListHardcoded.getElementsByClassName('book-list__title');
 }
 
 // add event listeners
