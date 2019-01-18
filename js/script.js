@@ -9,19 +9,13 @@ const search = document.getElementById('search');
 const searchMessage = document.querySelector('.search__message');
 const addBookForm = document.getElementById('addBookForm');
 const bookList = document.querySelector('.book-list');
-const bookListHardcoded = document.querySelector(
-  '.book-list.book-list-hardcoded'
-);
+const bookListHardcoded = $('.book-list.book-list-hardcoded');
 
-// get book titles for use in search - set initial value to hardcoded and reset in api call if made
-// I think this needs to be a live HTMLCollection so need to go back to using getElementsByClassName() or similar
-let bookTitles = document.querySelectorAll(
-  '.book-list-hardcoded .book-list__title'
-);
+let bookTitles = '';
 const bookListApi = $('.book-list.book-list-api');
 const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
-); // returns HTMLCollection (live)
+); // returns live HTMLCollection
 const hideBooks = document.getElementById('hide-books-input');
 
 // declare booksOpenLibHtml variable
@@ -29,7 +23,7 @@ let booksOpenLibHtml = '';
 
 // get data from Open Library API
 const getBooksOL = () => {
-  bookListHardcoded.style.display = 'none';
+  bookListHardcoded.css('display', 'none'); //jQuery
 
   $.getJSON(
     'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
@@ -64,11 +58,6 @@ const getBooksOL = () => {
 
         bookListApi.append(booksOpenLibHtml);
         addHighLighting();
-        // get book titles for use in search
-        // I think this needs to be a live HTMLCollection so need to go back to using getElementsByClassName() or similar
-        bookTitles = document.querySelectorAll(
-          '.book-list-api .book-list__title'
-        );
       } else {
         // we don't have data - show markup to explain that
       }
@@ -84,32 +73,19 @@ const searchBooks = () => {
 
   if (searchTerm) {
     for (let i = 0; i < bookTitles.length; i++) {
-      // bookTitles[i].parentElement.style.display = 'none';
       bookTitles[i].parentElement.classList.remove(
         'book-list__item--is-hidden'
       );
-      // match = false;
-      // console.log('match is:', match);
       if (bookTitles[i].textContent.toLowerCase().indexOf(searchTerm) != -1) {
-        // bookTitles[i].parentElement.style.display = 'flex';
         bookTitles[i].parentElement.classList.remove(
           'book-list__item--is-hidden'
         );
-        // match between search term and titles
-        // console.log('match between search term and titles');
-        // match = true;
-        // console.log('match is:', match);
       } else {
         bookTitles[i].parentElement.classList.add('book-list__item--is-hidden');
-        // NO match between search term and titles
-        // console.log('NO match between search term and titles');
-        // match = false;
-        // console.log('match is:', match);
       }
     }
   } else {
     for (let i = 0; i < bookTitles.length; i++) {
-      // bookTitles[i].parentElement.style.display = 'flex';
       bookTitles[i].parentElement.classList.remove(
         'book-list__item--is-hidden'
       );
@@ -139,7 +115,6 @@ const addBook = e => {
 const clearSearch = () => {
   search.value = '';
   for (let i = 0; i < bookTitles.length; i++) {
-    // bookTitles[i].parentElement.style.display = 'flex';
     bookTitles[i].parentElement.classList.remove('book-list__item--is-hidden');
   }
 };
@@ -171,9 +146,13 @@ const hideBooksHandler = () => {
 
 // get books from Open Library
 if (bookSource === 'api') {
+  // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
+  bookTitles = bookListApi[0].getElementsByClassName('book-list__title');
   getBooksOL();
 } else if (bookSource === 'hardcoded') {
   // disable api and show hardcoded list - TODO
+  // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
+  bookTitles = bookListHardcoded[0].getElementsByClassName('book-list__title');
 }
 
 // add event listeners
