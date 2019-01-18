@@ -2,6 +2,7 @@
 
 // flag to determine which book source to use - hardcoded or api
 let bookSource = 'api';
+let match = false;
 
 // save elements into identifiers and variables
 const search = document.getElementById('search');
@@ -13,6 +14,7 @@ const bookListHardcoded = document.querySelector(
 );
 
 // get book titles for use in search - set initial value to hardcoded and reset in api call if made
+// I think this needs to be a live HTMLCollection so need to go back to using getElementsByClassName() or similar
 let bookTitles = document.querySelectorAll(
   '.book-list-hardcoded .book-list__title'
 );
@@ -63,6 +65,7 @@ const getBooksOL = () => {
         bookListApi.append(booksOpenLibHtml);
         addHighLighting();
         // get book titles for use in search
+        // I think this needs to be a live HTMLCollection so need to go back to using getElementsByClassName() or similar
         bookTitles = document.querySelectorAll(
           '.book-list-api .book-list__title'
         );
@@ -81,14 +84,35 @@ const searchBooks = () => {
 
   if (searchTerm) {
     for (let i = 0; i < bookTitles.length; i++) {
-      bookTitles[i].parentElement.style.display = 'none';
+      // bookTitles[i].parentElement.style.display = 'none';
+      bookTitles[i].parentElement.classList.remove(
+        'book-list__item--is-hidden'
+      );
+      // match = false;
+      // console.log('match is:', match);
       if (bookTitles[i].textContent.toLowerCase().indexOf(searchTerm) != -1) {
-        bookTitles[i].parentElement.style.display = 'flex';
+        // bookTitles[i].parentElement.style.display = 'flex';
+        bookTitles[i].parentElement.classList.remove(
+          'book-list__item--is-hidden'
+        );
+        // match between search term and titles
+        // console.log('match between search term and titles');
+        // match = true;
+        // console.log('match is:', match);
+      } else {
+        bookTitles[i].parentElement.classList.add('book-list__item--is-hidden');
+        // NO match between search term and titles
+        // console.log('NO match between search term and titles');
+        // match = false;
+        // console.log('match is:', match);
       }
     }
   } else {
     for (let i = 0; i < bookTitles.length; i++) {
-      bookTitles[i].parentElement.style.display = 'flex';
+      // bookTitles[i].parentElement.style.display = 'flex';
+      bookTitles[i].parentElement.classList.remove(
+        'book-list__item--is-hidden'
+      );
     }
   }
 };
@@ -107,6 +131,7 @@ const addBook = e => {
     </li>
     `;
 
+  clearSearch();
   // re-invoke highlight hover states
   addHighLighting();
 };
@@ -114,7 +139,8 @@ const addBook = e => {
 const clearSearch = () => {
   search.value = '';
   for (let i = 0; i < bookTitles.length; i++) {
-    bookTitles[i].parentElement.style.display = 'flex';
+    // bookTitles[i].parentElement.style.display = 'flex';
+    bookTitles[i].parentElement.classList.remove('book-list__item--is-hidden');
   }
 };
 
