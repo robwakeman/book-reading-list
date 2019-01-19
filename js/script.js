@@ -8,8 +8,6 @@ const search = document.getElementById('search');
 const searchMessage = document.querySelector('.search__message');
 const addBookForm = document.getElementById('addBookForm');
 const bookLists = document.querySelectorAll('.book-list');
-const bookListHardcoded = document.getElementById('book-list-hardcoded');
-const bookListApi = document.getElementById('book-list-api');
 const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
 ); // returns live HTMLCollection
@@ -20,7 +18,7 @@ let bookList;
 let bookTitles;
 let booksOpenLibHtml;
 
-console.log(bookLists);
+// console.log(bookLists);
 
 // hide both lists and show selected list conditionally below
 bookLists.forEach(list => {
@@ -41,8 +39,6 @@ if (bookSource === 'api') {
 
 // get data from Open Library API
 const getBooksOL = () => {
-  // bookListHardcoded.style.display = 'none';
-
   $.getJSON(
     'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
     function(data) {
@@ -75,7 +71,7 @@ const getBooksOL = () => {
         }
 
         // booksOpenLibHtml is an array, so need to convert it to a string with join
-        bookListApi.innerHTML += booksOpenLibHtml.join('');
+        bookList.innerHTML += booksOpenLibHtml.join('');
         addHighLighting();
       } else {
         // we don't have data - show markup to explain that
