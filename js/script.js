@@ -7,7 +7,6 @@ let bookSource = 'api';
 const search = document.getElementById('search');
 const searchMessage = document.querySelector('.search__message');
 const addBookForm = document.getElementById('addBookForm');
-const bookList = document.querySelector('.book-list');
 const bookListHardcoded = document.getElementById('book-list-hardcoded');
 const bookListApi = document.getElementById('book-list-api');
 const bookListDeleteButtons = document.getElementsByClassName(
@@ -16,6 +15,7 @@ const bookListDeleteButtons = document.getElementsByClassName(
 const hideBooks = document.getElementById('hide-books-input');
 
 // declare other variables
+let bookList;
 let bookTitles;
 let booksOpenLibHtml;
 
@@ -145,11 +145,13 @@ const hideBooksHandler = () => {
 
 // get books from Open Library
 if (bookSource === 'api') {
+  bookList = document.getElementById('book-list-api');
   // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
   bookTitles = bookListApi.getElementsByClassName('book-list__title');
   getBooksOL();
 } else if (bookSource === 'hardcoded') {
   // disable api and show hardcoded list - TODO
+  bookList = document.getElementById('book-list-hardcoded');
   // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
   bookTitles = bookListHardcoded.getElementsByClassName('book-list__title');
 }
