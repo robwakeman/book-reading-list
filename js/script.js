@@ -31,12 +31,12 @@ if (bookSource === 'api') {
   bookList = document.getElementById('book-list-api');
   bookList.style.display = 'block';
   // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
-  bookTitles = bookListApi.getElementsByClassName('book-list__title');
+  bookTitles = bookList.getElementsByClassName('book-list__title');
 } else if (bookSource === 'hardcoded') {
   bookList = document.getElementById('book-list-hardcoded');
   bookList.style.display = 'block';
   // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
-  bookTitles = bookListHardcoded.getElementsByClassName('book-list__title');
+  bookTitles = bookList.getElementsByClassName('book-list__title');
 }
 
 // get data from Open Library API
