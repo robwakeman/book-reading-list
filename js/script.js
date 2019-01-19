@@ -7,6 +7,7 @@ let bookSource = 'api';
 const search = document.getElementById('search');
 const searchMessage = document.querySelector('.search__message');
 const addBookForm = document.getElementById('addBookForm');
+const bookLists = document.querySelectorAll('.book-list');
 const bookListHardcoded = document.getElementById('book-list-hardcoded');
 const bookListApi = document.getElementById('book-list-api');
 const bookListDeleteButtons = document.getElementsByClassName(
@@ -19,9 +20,28 @@ let bookList;
 let bookTitles;
 let booksOpenLibHtml;
 
+console.log(bookLists);
+
+// hide both lists and show selected list conditionally below
+bookLists.forEach(list => {
+  list.style.display = 'none';
+});
+
+if (bookSource === 'api') {
+  bookList = document.getElementById('book-list-api');
+  bookList.style.display = 'block';
+  // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
+  bookTitles = bookListApi.getElementsByClassName('book-list__title');
+} else if (bookSource === 'hardcoded') {
+  bookList = document.getElementById('book-list-hardcoded');
+  bookList.style.display = 'block';
+  // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
+  bookTitles = bookListHardcoded.getElementsByClassName('book-list__title');
+}
+
 // get data from Open Library API
 const getBooksOL = () => {
-  bookListHardcoded.style.display = 'none';
+  // bookListHardcoded.style.display = 'none';
 
   $.getJSON(
     'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
@@ -143,17 +163,9 @@ const hideBooksHandler = () => {
   }
 };
 
-// get books from Open Library
 if (bookSource === 'api') {
-  bookList = document.getElementById('book-list-api');
-  // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
-  bookTitles = bookListApi.getElementsByClassName('book-list__title');
+  // get books from Open Library
   getBooksOL();
-} else if (bookSource === 'hardcoded') {
-  // disable api and show hardcoded list - TODO
-  bookList = document.getElementById('book-list-hardcoded');
-  // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
-  bookTitles = bookListHardcoded.getElementsByClassName('book-list__title');
 }
 
 // add event listeners
