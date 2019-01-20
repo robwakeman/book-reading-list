@@ -39,6 +39,7 @@ button {
 .h1 {
   font-size: 2rem;
   margin-block-end: 2px;
+  -webkit-margin-after: 2px; /* for safari */
 }
 
 .h2 {
@@ -51,7 +52,9 @@ button {
 .search {
   width: 100%;
   margin-block-start: 20px;
+  -webkit-margin-before: 20px; /* for safari */
   margin-block-end: 20px;
+  -webkit-margin-after: 20px; /* for safari */
 }
 
 @media (min-width: 600px) {
@@ -100,6 +103,7 @@ button {
   justify-content: space-between;
   align-items: center;
   margin-block-end: 20px;
+  -webkit-margin-after: 20px; /* for safari */
   border-left: 5px solid #ddd;
 }
 
@@ -135,6 +139,7 @@ button {
   justify-content: center;
   margin: 0 auto;
   margin-block-end: 1rem;
+  -webkit-margin-after: 1rem; /* for safari */
 }
 
 .hide-books {
