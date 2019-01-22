@@ -102,26 +102,26 @@ p {
   border-radius: 5px;
 }
 
-.search__message {
+/*----------------------- Book List Styles ------------------------------ */
+
+.books {
+  padding: 1rem;
+}
+
+.books__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.books__message {
   color: purple;
   background: rgba(128, 0, 128, 0.192);
   padding: 1rem 1.4rem;
   border-radius: 5px;
 }
 
-.search__message.search__message--is-hidden {
+.books__message.books__message--is-hidden {
   display: none;
-}
-
-/*----------------------- Book List Styles ------------------------------ */
-
-.book-container {
-  padding: 1rem;
-}
-
-.book-container__inner {
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 .book-list {
@@ -166,7 +166,7 @@ p {
   background: black;
 }
 
-.book-container__no-data {
+.books__no-data {
   margin-block-end: 2.5rem;
   -webkit-margin-after: 2.5rem;
 }

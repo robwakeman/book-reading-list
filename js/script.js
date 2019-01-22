@@ -5,7 +5,7 @@ let bookSource = 'api';
 
 // save elements into constants
 const search = document.getElementById('search');
-const searchMessage = document.querySelector('.search__message');
+const searchMessage = document.querySelector('.books__message');
 const addBookForm = document.getElementById('addBookForm');
 const bookLists = document.querySelectorAll('.book-list');
 const bookListDeleteButtons = document.getElementsByClassName(
@@ -80,7 +80,7 @@ const getBooksOL = () => {
         // show No Data message
         const noDataEl = document.createElement('P');
         noDataEl.textContent = 'Sorry, there is currently no data.';
-        noDataEl.classList.add('book-container__no-data');
+        noDataEl.classList.add('books__no-data');
         bookList.parentElement.appendChild(noDataEl);
       }
     }
@@ -105,6 +105,16 @@ const searchBooks = () => {
       } else {
         bookTitles[i].parentElement.classList.add('book-list__item--is-hidden');
       }
+    }
+    let numBooks = document.getElementsByClassName(
+      'book-list__item--is-hidden'
+    );
+    console.log(Array.from(numBooks).length); // 5 when no books showing
+    if (Array.from(numBooks).length >= 5) {
+      // show search message - no books found
+      searchMessage.classList.remove('books__message--is-hidden');
+    } else {
+      searchMessage.classList.add('books__message--is-hidden');
     }
   } else {
     for (let i = 0; i < bookTitles.length; i++) {
