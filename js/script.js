@@ -40,7 +40,7 @@ if (bookSource === 'api') {
 // get data from Open Library API
 const getBooksOL = () => {
   $.getJSON(
-    'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
+    'http://openlibrary.org/subjects/crimexxx.json?published_in=1800-1880&limit=5',
     function(data) {
       const booksFromApi = data.works; //array
       // console.log(booksFromApi.length);
@@ -74,9 +74,13 @@ const getBooksOL = () => {
         bookList.innerHTML += booksOpenLibHtml.join('');
         addHighLighting();
       } else {
-        // we don't have data - show markup to explain that
+        // we don't have data
+        // hide api list
+        bookList.style.display = 'none';
+        // show No Data message
         const noDataEl = document.createElement('P');
         noDataEl.textContent = 'Sorry, there is currently no data.';
+        noDataEl.classList.add('book-container__no-data');
         bookList.parentElement.appendChild(noDataEl);
       }
     }

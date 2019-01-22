@@ -166,6 +166,11 @@ p {
   background: black;
 }
 
+.book-container__no-data {
+  margin-block-end: 2.5rem;
+  -webkit-margin-after: 2.5rem;
+}
+
 /*----------------------- Hide Books Styles ------------------------------ */
 
 .hide-books {
