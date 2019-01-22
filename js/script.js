@@ -40,7 +40,7 @@ if (bookSource === 'api') {
 // get data from Open Library API
 const getBooksOL = () => {
   $.getJSON(
-    'http://openlibrary.org/subjects/crimexxx.json?published_in=1800-1880&limit=5',
+    'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
     function(data) {
       const booksFromApi = data.works; //array
       // console.log(booksFromApi.length);
