@@ -11,6 +11,7 @@ This app is a demo of some of my coding practices:
 - **HTML**
   - Form elements contain ARIA attributes for accessibility.
 - **CSS**
+  - If used in a production context, Normalize.css would likely be used, which would impact some of the existing CSS in this project.
   - CSS uses BEM methodology.
   - Flexbox and Grid is used for some layout.
   - The project is too small to justify the use of Sass.
