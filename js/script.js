@@ -113,8 +113,11 @@ const searchBooks = () => {
     if (Array.from(numBooks).length >= 5) {
       // show search message - no books found
       searchMessage.classList.remove('books__message--is-hidden');
+      // hide empty book list ul
+      bookList.style.display = 'none';
     } else {
       searchMessage.classList.add('books__message--is-hidden');
+      bookList.style.display = 'block';
     }
   } else {
     for (let i = 0; i < bookTitles.length; i++) {
