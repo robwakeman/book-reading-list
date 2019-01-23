@@ -11,7 +11,8 @@ const bookLists = document.querySelectorAll('.book-list');
 const bookListDeleteButtons = document.getElementsByClassName(
   'book-list__delete'
 ); // returns live HTMLCollection
-const hideBooks = document.getElementById('hide-books-input');
+const hideBooksForm = document.getElementById('hide-books-form');
+const hideBooksInput = document.getElementById('hide-books-input');
 
 // declare other variables
 let bookList;
@@ -115,9 +116,11 @@ const searchBooks = () => {
       searchMessage.classList.remove('books__message--is-hidden');
       // hide empty book list ul
       bookList.style.display = 'none';
+      hideBooksForm.style.display = 'none';
     } else {
       searchMessage.classList.add('books__message--is-hidden');
       bookList.style.display = 'block';
+      hideBooksForm.style.display = 'flex';
     }
   } else {
     for (let i = 0; i < bookTitles.length; i++) {
@@ -171,8 +174,8 @@ const deleteBook = e => {
   }
 };
 
-const hideBooksHandler = () => {
-  if (hideBooks.checked) {
+const hideBooksInputHandler = () => {
+  if (hideBooksInput.checked) {
     bookList.style.display = 'none';
   } else {
     bookList.style.display = 'block';
@@ -188,5 +191,5 @@ if (bookSource === 'api') {
 search.addEventListener('keyup', searchBooks);
 addBookForm.addEventListener('submit', addBook);
 bookList.addEventListener('click', deleteBook);
-hideBooks.addEventListener('change', hideBooksHandler);
+hideBooksInput.addEventListener('change', hideBooksInputHandler);
 addHighLighting();
