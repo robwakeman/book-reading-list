@@ -146,7 +146,6 @@ const addBook = e => {
     </li>
     `;
 
-  // resetSearch();
   // re-invoke highlight hover states
   addHighLighting();
 };
