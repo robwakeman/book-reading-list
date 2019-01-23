@@ -110,8 +110,8 @@ const searchBooks = () => {
       }
     }
 
-    console.log('books', Array.from(books).length);
-    console.log('booksHidden', Array.from(booksHidden).length);
+    // console.log('books', Array.from(books).length);
+    // console.log('booksHidden', Array.from(booksHidden).length);
 
     if (Array.from(booksHidden).length === books.length) {
       // show search message - no books found
@@ -120,11 +120,8 @@ const searchBooks = () => {
       booksShowing();
     }
   } else {
-    for (let i = 0; i < bookTitles.length; i++) {
-      bookTitles[i].parentElement.classList.remove(
-        'book-list__item--is-hidden'
-      );
-    }
+    // no search term
+    resetSearch();
   }
 };
 
