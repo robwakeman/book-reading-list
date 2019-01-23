@@ -18,6 +18,8 @@ const hideBooksInput = document.getElementById('hide-books-input');
 let bookList;
 let bookTitles;
 let booksOpenLibHtml;
+let books;
+let booksHidden;
 
 // console.log(bookLists);
 
@@ -29,11 +31,15 @@ bookLists.forEach(list => {
 if (bookSource === 'api') {
   bookList = document.getElementById('book-list-api');
   bookList.style.display = 'block';
+  books = bookList.getElementsByClassName('book-list__item');
+  booksHidden = bookList.getElementsByClassName('book-list__item--is-hidden');
   // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
   bookTitles = bookList.getElementsByClassName('book-list__title');
 } else if (bookSource === 'hardcoded') {
   bookList = document.getElementById('book-list-hardcoded');
   bookList.style.display = 'block';
+  books = bookList.getElementsByClassName('book-list__item');
+  booksHidden = bookList.getElementsByClassName('book-list__item--is-hidden');
   // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
   bookTitles = bookList.getElementsByClassName('book-list__title');
 }
@@ -107,20 +113,15 @@ const searchBooks = () => {
         bookTitles[i].parentElement.classList.add('book-list__item--is-hidden');
       }
     }
-    let numBooks = document.getElementsByClassName(
-      'book-list__item--is-hidden'
-    );
-    console.log(Array.from(numBooks).length); // 5 when no books showing
-    if (Array.from(numBooks).length >= 5) {
+
+    console.log('books', Array.from(books).length);
+    console.log('booksHidden', Array.from(booksHidden).length);
+
+    if (Array.from(booksHidden).length === books.length) {
       // show search message - no books found
-      searchMessage.classList.remove('books__message--is-hidden');
-      // hide empty book list ul
-      bookList.style.display = 'none';
-      hideBooksForm.style.display = 'none';
+      noBooksShowing();
     } else {
-      searchMessage.classList.add('books__message--is-hidden');
-      bookList.style.display = 'block';
-      hideBooksForm.style.display = 'flex';
+      booksShowing();
     }
   } else {
     for (let i = 0; i < bookTitles.length; i++) {
@@ -136,7 +137,7 @@ const addBook = e => {
   const newBookTitle = document.getElementById('addBookInput').value;
 
   // need to clear search, because if filtered list of books still displays from a search and then add book, that newly added book won't display if search term not matched
-  clearSearch();
+  resetSearch();
 
   bookList.innerHTML += `
     <li id="" class="book-list__item">
@@ -145,16 +146,30 @@ const addBook = e => {
     </li>
     `;
 
-  clearSearch();
+  // resetSearch();
   // re-invoke highlight hover states
   addHighLighting();
 };
 
-const clearSearch = () => {
+const booksShowing = () => {
+  searchMessage.classList.add('books__message--is-hidden');
+  bookList.style.display = 'block';
+  hideBooksForm.style.display = 'flex';
+};
+
+const noBooksShowing = () => {
+  searchMessage.classList.remove('books__message--is-hidden');
+  // hide empty book list ul
+  bookList.style.display = 'none';
+  hideBooksForm.style.display = 'none';
+};
+
+const resetSearch = () => {
   search.value = '';
   for (let i = 0; i < bookTitles.length; i++) {
     bookTitles[i].parentElement.classList.remove('book-list__item--is-hidden');
   }
+  booksShowing();
 };
 
 const addHighLighting = () => {
