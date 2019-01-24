@@ -14,80 +14,33 @@
         <h1>Book Reading List</h1>
         <h2>Manage the list with add, edit, delete</h2>
         <div class="search">
-          <form class="search__form">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              class="search__field"
-              placeholder="Search books..."
-              aria-label="Search books"
-            />
-          </form>
+          <form class="search__form"><input type="text" name="search" id="search" class="search__field" placeholder="Search books..." aria-label="Search books" /></form>
         </div>
       </header>
       <div class="books">
         <div class="books__inner">
           <h3>Books to Read</h3>
-          <p class="books__message books__message--is-hidden">
-            No books found. Please try searching for something else.
-          </p>
+          <p class="books__message books__message--is-hidden">No books found. Please try searching for something else.</p>
           <ul id="book-list-api" class="book-list"></ul>
           <ul id="book-list-hardcoded" class="book-list">
-            <li id="HC1" class="book-list__item">
-              <span class="book-list__title">High-Rise</span
-              ><button class="book-list__delete">Delete</button>
-            </li>
-            <li id="HC2" class="book-list__item">
-              <span class="book-list__title">Wuthering Heights</span
-              ><button class="book-list__delete">Delete</button>
-            </li>
-            <li id="HC3" class="book-list__item">
-              <span class="book-list__title">Heart of Darkness</span
-              ><button class="book-list__delete">Delete</button>
-            </li>
+            <li id="HC1" class="book-list__item"><span class="book-list__title">High-Rise</span><button class="book-list__delete">Delete</button></li>
+            <li id="HC2" class="book-list__item"><span class="book-list__title">Wuthering Heights</span><button class="book-list__delete">Delete</button></li>
+            <li id="HC3" class="book-list__item"><span class="book-list__title">Heart of Darkness</span><button class="book-list__delete">Delete</button></li>
           </ul>
         </div>
         <div>
           <form id="hide-books-form" class="hide-books">
-            <label for="hide-books-input">
-              <input
-                type="checkbox"
-                name="hide_books"
-                id="hide-books-input"
-                class="hide-books__input"
-                aria-label="Hide books"
-              />Hide all books</label
-            >
+            <label for="hide-books-input"> <input type="checkbox" name="hide_books" id="hide-books-input" class="hide-books__input" aria-label="Hide books" />Hide all books</label>
           </form>
         </div>
         <div class="add-book">
           <div class="add-book__inner">
-            <form id="addBookForm">
-              <input
-                type="text"
-                name="addBook"
-                id="addBookInput"
-                class="add-book__title"
-                aria-label="Enter book title"
-                required
-              /><input
-                type="submit"
-                id="addBookSubmit"
-                class="add-book__submit"
-                value="Add"
-                aria-label="Add book"
-              />
-            </form>
+            <form id="addBookForm"><input type="text" name="addBook" id="addBookInput" class="add-book__title" aria-label="Enter book title" required /><input type="submit" id="addBookSubmit" class="add-book__submit" value="Add" aria-label="Add book" /></form>
           </div>
         </div>
       </div>
     </div>
   </body>
-  <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"
-  ></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="js/script.js"></script>
 </html>
