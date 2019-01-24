@@ -10,6 +10,7 @@ This app is a demo of some of my coding practices:
 
 - **HTML**
   - Form elements contain ARIA attributes for accessibility.
+  - Add book validation is simply managed by the required attribute on the input field. If used in production, the validation would be a more elegant solution that worked consistently cross-browser.
 - **CSS**
   - If used in a production context, I would consider using Normalize.css, which would mean rewriting some of the existing custom CSS in this project.
   - CSS uses BEM methodology.
