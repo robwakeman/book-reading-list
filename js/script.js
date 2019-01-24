@@ -110,9 +110,6 @@ const searchBooks = () => {
       }
     }
 
-    // console.log('books', Array.from(books).length);
-    // console.log('booksHidden', Array.from(booksHidden).length);
-
     if (Array.from(booksHidden).length === Array.from(books).length) {
       // show search message - no books found
       noBooksShowing();
