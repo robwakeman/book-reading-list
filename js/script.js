@@ -8,9 +8,7 @@ const search = document.getElementById('search');
 const searchMessage = document.querySelector('.books__message');
 const addBookForm = document.getElementById('addBookForm');
 const bookLists = document.querySelectorAll('.book-list');
-const bookListDeleteButtons = document.getElementsByClassName(
-  'book-list__delete'
-); // returns live HTMLCollection
+const bookListDeleteButtons = document.getElementsByClassName('book-list__delete'); // returns live HTMLCollection
 const hideBooksForm = document.getElementById('hide-books-form');
 const hideBooksInput = document.getElementById('hide-books-input');
 
@@ -42,52 +40,43 @@ bookTitles = bookList.getElementsByClassName('book-list__title');
 
 // get data from Open Library API
 const getBooksOL = () => {
-  $.getJSON(
-    'http://openlibrary.org/subjects/crime.json?published_in=1800-1880&limit=5',
-    function(data) {
-      const booksFromApi = data.works; //array
-      // console.log(booksFromApi.length);
-      // console.table(booksFromApi);
+  $.getJSON('http://openlibrary.org/subjects/crime.json?published_in=1840-1880&limit=5', function(data) {
+    const booksFromApi = data.works; //array
+    // console.log(booksFromApi.length);
+    // console.table(booksFromApi);
 
-      if (booksFromApi.length) {
-        // there are books
+    if (booksFromApi.length) {
+      // there are books
 
-        const booksOpenLib = booksFromApi.map(book => {
-          return {
-            bookOpenLibId: book.cover_edition_key,
-            bookOpenLibTitle: book.title
-          };
+      const booksOpenLib = booksFromApi.map(book => {
+        return {
+          bookOpenLibId: book.cover_edition_key,
+          bookOpenLibTitle: book.title
+        };
+      });
+
+      // console.log(booksOpenLib);
+
+      if (booksOpenLib.length) {
+        booksOpenLibHtml = booksOpenLib.map(book => {
+          return '<li id="' + book.bookOpenLibId + '" class="book-list__item"><span class="book-list__title">' + book.bookOpenLibTitle + '</span><button class="book-list__delete">Delete</button></li>';
         });
-
-        // console.log(booksOpenLib);
-
-        if (booksOpenLib.length) {
-          booksOpenLibHtml = booksOpenLib.map(book => {
-            return (
-              '<li id="' +
-              book.bookOpenLibId +
-              '" class="book-list__item"><span class="book-list__title">' +
-              book.bookOpenLibTitle +
-              '</span><button class="book-list__delete">Delete</button></li>'
-            );
-          });
-        }
-
-        // booksOpenLibHtml is an array, so need to convert it to a string with join
-        bookList.innerHTML += booksOpenLibHtml.join('');
-        addHighLighting();
-      } else {
-        // we don't have data
-        // hide api list
-        bookList.style.display = 'none';
-        // show No Data message
-        const noDataEl = document.createElement('P');
-        noDataEl.textContent = 'Sorry, there is currently no data.';
-        noDataEl.classList.add('books__no-data');
-        bookList.parentElement.appendChild(noDataEl);
       }
+
+      // booksOpenLibHtml is an array, so need to convert it to a string with join
+      bookList.innerHTML += booksOpenLibHtml.join('');
+      addHighLighting();
+    } else {
+      // we don't have data
+      // hide api list
+      bookList.style.display = 'none';
+      // show No Data message
+      const noDataEl = document.createElement('P');
+      noDataEl.textContent = 'Sorry, there is currently no data.';
+      noDataEl.classList.add('books__no-data');
+      bookList.parentElement.appendChild(noDataEl);
     }
-  ).fail(function() {
+  }).fail(function() {
     console.log(jqxhr.responseText);
   });
 };
@@ -98,13 +87,9 @@ const searchBooks = () => {
 
   if (searchTerm) {
     for (let i = 0; i < bookTitles.length; i++) {
-      bookTitles[i].parentElement.classList.remove(
-        'book-list__item--is-hidden'
-      );
+      bookTitles[i].parentElement.classList.remove('book-list__item--is-hidden');
       if (bookTitles[i].textContent.toLowerCase().indexOf(searchTerm) != -1) {
-        bookTitles[i].parentElement.classList.remove(
-          'book-list__item--is-hidden'
-        );
+        bookTitles[i].parentElement.classList.remove('book-list__item--is-hidden');
       } else {
         bookTitles[i].parentElement.classList.add('book-list__item--is-hidden');
       }
@@ -163,12 +148,8 @@ const resetSearch = () => {
 
 const addHighLighting = () => {
   for (let deleteButton of bookListDeleteButtons) {
-    deleteButton.addEventListener('mouseenter', e =>
-      e.target.parentElement.classList.toggle('book-list__item--is-hovered')
-    );
-    deleteButton.addEventListener('mouseleave', e =>
-      e.target.parentElement.classList.toggle('book-list__item--is-hovered')
-    );
+    deleteButton.addEventListener('mouseenter', e => e.target.parentElement.classList.toggle('book-list__item--is-hovered'));
+    deleteButton.addEventListener('mouseleave', e => e.target.parentElement.classList.toggle('book-list__item--is-hovered'));
   }
 };
 
