@@ -13,6 +13,15 @@
       <header class="header">
         <h1>Book Reading List</h1>
         <h2>Manage the list with add, edit, delete</h2>
+        <div class="data-source-container">
+          <form class="data-source">
+            <label for="data-source" class="data-source__label">Choose a data source:</label>
+            <select id="data-source" class="data-source__select">
+              <option value="api">Open Library API</option>
+              <option value="hardcoded">Hardcoded</option>
+            </select>
+          </form>
+        </div>
         <div class="search">
           <form class="search__form"><input type="text" name="search" id="search" class="search__field" placeholder="Search books..." aria-label="Search books" /></form>
         </div>
