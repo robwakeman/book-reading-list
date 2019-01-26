@@ -1,9 +1,10 @@
 'use strict';
 
-// flag to determine which book source to use - 'hardcoded' or 'api'
+// flag to determine which book source to use - 'hardcoded' or 'api' - default is api
 let bookSource = 'api';
 
 // save elements into constants
+const dataSourceSelect = document.getElementById('data-source-select');
 const search = document.getElementById('search');
 const searchMessage = document.querySelector('.books__message');
 const addBookForm = document.getElementById('addBookForm');
@@ -19,24 +20,30 @@ let booksOpenLibHtml;
 let books;
 let booksHidden;
 
-// console.log(bookLists);
+const dataSourceSelectHandler = () => {
+  bookSource = dataSourceSelect.value;
+  console.log(bookSource);
+  initBookList();
+};
 
-// hide both lists and show selected list conditionally below
-bookLists.forEach(list => {
-  list.style.display = 'none';
-});
+const initBookList = () => {
+  // hide both lists and show selected list conditionally below
+  bookLists.forEach(list => {
+    list.style.display = 'none';
+  });
 
-if (bookSource === 'api') {
-  bookList = document.getElementById('book-list-api');
-} else if (bookSource === 'hardcoded') {
-  bookList = document.getElementById('book-list-hardcoded');
-}
+  if (bookSource === 'api') {
+    bookList = document.getElementById('book-list-api');
+  } else {
+    bookList = document.getElementById('book-list-hardcoded');
+  }
 
-bookList.style.display = 'block';
-books = bookList.getElementsByClassName('book-list__item');
-booksHidden = bookList.getElementsByClassName('book-list__item--is-hidden');
-// set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
-bookTitles = bookList.getElementsByClassName('book-list__title');
+  bookList.style.display = 'block';
+  books = bookList.getElementsByClassName('book-list__item');
+  booksHidden = bookList.getElementsByClassName('book-list__item--is-hidden');
+  // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
+  bookTitles = bookList.getElementsByClassName('book-list__title');
+};
 
 // get data from Open Library API
 const getBooksOL = () => {
@@ -54,8 +61,6 @@ const getBooksOL = () => {
           bookOpenLibTitle: book.title
         };
       });
-
-      // console.log(booksOpenLib);
 
       if (booksOpenLib.length) {
         booksOpenLibHtml = booksOpenLib.map(book => {
@@ -172,9 +177,12 @@ if (bookSource === 'api') {
   getBooksOL();
 }
 
+initBookList();
+addHighLighting();
+
 // add event listeners
+dataSourceSelect.addEventListener('change', dataSourceSelectHandler);
 search.addEventListener('keyup', searchBooks);
 addBookForm.addEventListener('submit', addBook);
 bookList.addEventListener('click', deleteBook);
 hideBooksInput.addEventListener('change', hideBooksInputHandler);
-addHighLighting();
