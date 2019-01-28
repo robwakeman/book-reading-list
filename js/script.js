@@ -22,7 +22,6 @@ let booksHidden;
 
 const dataSourceSelectHandler = () => {
   bookSource = dataSourceSelect.value;
-  console.log(bookSource);
   initBookList();
 };
 
