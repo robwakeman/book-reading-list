@@ -42,6 +42,8 @@ const initBookList = () => {
   booksHidden = bookList.getElementsByClassName('book-list__item--is-hidden');
   // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
   bookTitles = bookList.getElementsByClassName('book-list__title');
+  // add delete functionality to delete buttons
+  bookList.addEventListener('click', deleteBook);
 };
 
 // get data from Open Library API
@@ -183,5 +185,4 @@ addHighLighting();
 dataSourceSelect.addEventListener('change', dataSourceSelectHandler);
 search.addEventListener('keyup', searchBooks);
 addBookForm.addEventListener('submit', addBook);
-bookList.addEventListener('click', deleteBook);
 hideBooksInput.addEventListener('change', hideBooksInputHandler);
