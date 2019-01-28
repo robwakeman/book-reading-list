@@ -28,7 +28,6 @@ The original book list is static and hardcoded. It is hidden when the Open Libra
 
 ## TODO
 
-- The book data is currently sourced from the [Open Library API](https://openlibrary.org/dev/docs/api/books) and this option set with a flag in the script. The other data source option is to use the hardcoded books in the HTML. To set up a select field to opt between Open Library API book list and hardcoded book list.
 - No need to add IE11 fallbacks for CSS Grid with the CSS as it stands. Only consider fallbacks if Grid features are used that aren't supported by IE11 e.g. grid-auto-rows and span
 
 ## License
