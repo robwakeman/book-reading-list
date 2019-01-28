@@ -253,6 +253,11 @@ p {
 
 /*----------------------- Add Book Styles ------------------------------ */
 
+.add-book {
+  margin-block-end: 1rem;
+  -webkit-margin-after: 1rem; /* for safari */
+}
+
 .add-book__inner {
   width: 100%;
 }
