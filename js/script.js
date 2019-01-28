@@ -103,9 +103,9 @@ const searchBooks = () => {
 
     if (Array.from(booksHidden).length === Array.from(books).length) {
       // show search message - no books found
-      noBooksShowing();
+      noBooksShowingSearch();
     } else {
-      booksShowing();
+      booksShowingSearch();
     }
   } else {
     // no search term
@@ -131,13 +131,13 @@ const addBook = e => {
   addHighLighting();
 };
 
-const booksShowing = () => {
+const booksShowingSearch = () => {
   searchMessage.classList.add('books__message--is-hidden');
   bookList.style.display = 'block';
   hideBooksForm.style.display = 'flex';
 };
 
-const noBooksShowing = () => {
+const noBooksShowingSearch = () => {
   searchMessage.classList.remove('books__message--is-hidden');
   // hide empty book list ul
   bookList.style.display = 'none';
@@ -149,7 +149,7 @@ const resetSearch = () => {
   for (let i = 0; i < bookTitles.length; i++) {
     bookTitles[i].parentElement.classList.remove('book-list__item--is-hidden');
   }
-  booksShowing();
+  booksShowingSearch();
 };
 
 const addHighLighting = () => {
@@ -162,6 +162,13 @@ const addHighLighting = () => {
 const deleteBook = e => {
   if (e.target.className === 'book-list__delete') {
     e.target.parentElement.remove();
+  }
+
+  if (Array.from(books).length === 0) {
+    // show message: You've deleted all the books from the list. If you want to add any to the list, please use the Add button below.
+    console.log('All books deleted');
+  } else {
+    console.log('There is at least 1 book in the list');
   }
 };
 
