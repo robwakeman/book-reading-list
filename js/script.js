@@ -127,6 +127,7 @@ const addBook = e => {
     </li>
     `;
 
+  checkAllBooksDeleted();
   // re-invoke highlight hover states
   addHighLighting();
 };
@@ -159,17 +160,21 @@ const addHighLighting = () => {
   }
 };
 
-const deleteBook = e => {
-  if (e.target.className === 'book-list__delete') {
-    e.target.parentElement.remove();
-  }
-
+// check if all books have been deleted
+const checkAllBooksDeleted = e => {
   if (Array.from(books).length === 0) {
     // show message: You've deleted all the books from the list. If you want to add any to the list, please use the Add button below.
     console.log('All books deleted');
   } else {
     console.log('There is at least 1 book in the list');
   }
+};
+
+const deleteBook = e => {
+  if (e.target.className === 'book-list__delete') {
+    e.target.parentElement.remove();
+  }
+  checkAllBooksDeleted();
 };
 
 const hideBooksInputHandler = () => {
