@@ -224,6 +224,7 @@ p {
   padding: 0.3rem 0.5rem;
   margin: 8px;
   cursor: pointer;
+  border: none;
   border-radius: 5px;
 }
 
