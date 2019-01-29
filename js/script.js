@@ -24,6 +24,12 @@ let booksHidden;
 const dataSourceSelectHandler = () => {
   bookSource = dataSourceSelect.value;
   initBookList();
+  if (Array.from(books).length === 0) {
+    bookList.style.display = 'none';
+    hideBooksForm.style.display = 'none';
+    // show delete message: You've deleted all the books...
+    deleteMessage.classList.remove('is-hidden');
+  }
 };
 
 const hideMessages = () => {
@@ -51,6 +57,11 @@ const initBookList = () => {
   bookTitles = bookList.getElementsByClassName('book-list__title');
   // add delete functionality to delete buttons
   bookList.addEventListener('click', deleteBook);
+
+  // only check for deleted books here if it's the hardcoded list, cos the api list won't have loaded yet
+  if (bookSource === 'hardcoded') {
+    checkAllBooksDeleted();
+  }
 
   hideMessages();
   resetSearch();
@@ -82,6 +93,7 @@ const getBooksOL = () => {
       // booksOpenLibHtml is an array, so need to convert it to a string with join
       bookList.innerHTML += booksOpenLibHtml.join('');
       addHighLighting();
+      checkAllBooksDeleted();
     } else {
       // we don't have data
       // hide api list
@@ -181,6 +193,7 @@ const addHighLighting = () => {
 
 // check if all books have been deleted
 const checkAllBooksDeleted = () => {
+  console.log('Num of books', Array.from(books).length);
   if (Array.from(books).length === 0) {
     console.log('All books deleted', bookSource);
     // show delete message: You've deleted all the books...
