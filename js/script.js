@@ -26,6 +26,12 @@ const dataSourceSelectHandler = () => {
   initBookList();
 };
 
+const hideMessages = () => {
+  // hide messages for search and delete
+  searchMessage.classList.add('is-hidden');
+  deleteMessage.classList.add('is-hidden');
+};
+
 const initBookList = () => {
   // hide both lists and show selected list conditionally below
   bookLists.forEach(list => {
@@ -45,6 +51,9 @@ const initBookList = () => {
   bookTitles = bookList.getElementsByClassName('book-list__title');
   // add delete functionality to delete buttons
   bookList.addEventListener('click', deleteBook);
+
+  hideMessages();
+  resetSearch();
 };
 
 // get data from Open Library API
@@ -102,12 +111,7 @@ const searchBooks = () => {
       }
     }
 
-    if (Array.from(booksHidden).length === Array.from(books).length) {
-      // show search message - no books found
-      noBooksShowingSearch();
-    } else {
-      booksShowingSearch();
-    }
+    checkIfBooksShowing();
   } else {
     // no search term
     resetSearch();
@@ -129,6 +133,7 @@ const addBook = e => {
     `;
 
   checkAllBooksDeleted();
+  // checkIfBooksShowing();
   // re-invoke highlight hover states
   addHighLighting();
 };
@@ -144,6 +149,19 @@ const noBooksShowingSearch = () => {
   // hide empty book list ul
   bookList.style.display = 'none';
   hideBooksForm.style.display = 'none';
+};
+
+const checkIfBooksShowing = () => {
+  if (Array.from(booksHidden).length === Array.from(books).length) {
+    // show search message - no books found
+    noBooksShowingSearch();
+  } else {
+    booksShowingSearch();
+  }
+};
+
+const clearSearch = () => {
+  search.value = '';
 };
 
 const resetSearch = () => {
@@ -162,15 +180,20 @@ const addHighLighting = () => {
 };
 
 // check if all books have been deleted
-const checkAllBooksDeleted = e => {
+const checkAllBooksDeleted = () => {
   if (Array.from(books).length === 0) {
-    console.log('All books deleted');
+    console.log('All books deleted', bookSource);
     // show delete message: You've deleted all the books...
     deleteMessage.classList.remove('is-hidden');
+    // hide empty book list ul
+    bookList.style.display = 'none';
+    hideBooksForm.style.display = 'none';
   } else {
-    console.log('There is at least 1 book in the list');
+    console.log('There is at least 1 book in the list', bookSource);
     // hide delete message: You've deleted all the books...
     deleteMessage.classList.add('is-hidden');
+    bookList.style.display = 'block';
+    hideBooksForm.style.display = 'flex';
   }
 };
 

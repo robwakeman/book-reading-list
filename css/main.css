@@ -167,6 +167,15 @@ p {
   margin: 0 auto;
 }
 
+.books__warning {
+  color: #856404;
+  background: #fff3cd;
+  padding: 1rem 1.4rem;
+  border-radius: 5px;
+  margin-block-end: 2.5rem;
+  -webkit-margin-after: 2.5rem; /* for safari */
+}
+
 .books__message {
   color: purple;
   background: rgba(128, 0, 128, 0.192);
