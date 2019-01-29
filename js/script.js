@@ -133,13 +133,13 @@ const addBook = e => {
 };
 
 const booksShowingSearch = () => {
-  searchMessage.classList.add('books__message--is-hidden');
+  searchMessage.classList.add('is-hidden');
   bookList.style.display = 'block';
   hideBooksForm.style.display = 'flex';
 };
 
 const noBooksShowingSearch = () => {
-  searchMessage.classList.remove('books__message--is-hidden');
+  searchMessage.classList.remove('is-hidden');
   // hide empty book list ul
   bookList.style.display = 'none';
   hideBooksForm.style.display = 'none';
