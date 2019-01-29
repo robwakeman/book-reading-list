@@ -6,7 +6,8 @@ let bookSource = 'api';
 // save elements into constants
 const dataSourceSelect = document.getElementById('data-source-select');
 const search = document.getElementById('search');
-const searchMessage = document.querySelector('.books__message');
+const searchMessage = document.querySelector('.books__message-search');
+const deleteMessage = document.querySelector('.books__message-delete');
 const addBookForm = document.getElementById('addBookForm');
 const bookLists = document.querySelectorAll('.book-list');
 const bookListDeleteButtons = document.getElementsByClassName('book-list__delete'); // returns live HTMLCollection
@@ -163,10 +164,13 @@ const addHighLighting = () => {
 // check if all books have been deleted
 const checkAllBooksDeleted = e => {
   if (Array.from(books).length === 0) {
-    // show message: You've deleted all the books from the list. If you want to add any to the list, please use the Add button below.
     console.log('All books deleted');
+    // show delete message: You've deleted all the books...
+    deleteMessage.classList.remove('is-hidden');
   } else {
     console.log('There is at least 1 book in the list');
+    // hide delete message: You've deleted all the books...
+    deleteMessage.classList.add('is-hidden');
   }
 };
 
