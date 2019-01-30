@@ -61,8 +61,6 @@ const initBookList = () => {
 const getBooksOL = () => {
   $.getJSON('http://openlibrary.org/subjects/crime.json?published_in=1840-1880&limit=5', function(data) {
     const booksFromApi = data.works; //array
-    // console.log(booksFromApi.length);
-    // console.table(booksFromApi);
 
     if (booksFromApi.length) {
       // there are books
@@ -191,15 +189,12 @@ const hideBookListAndHideBooksForm = () => {
 
 // check if all books have been deleted
 const checkAllBooksDeleted = () => {
-  console.log('Num of books', Array.from(books).length);
   if (Array.from(books).length === 0) {
-    console.log('All books deleted', bookSource);
-    // show delete message: You've deleted all the books...
+    // All books deleted - show delete message (You've deleted all the books...)
     deleteMessage.classList.remove('is-hidden');
     hideBookListAndHideBooksForm();
   } else {
-    console.log('There is at least 1 book in the list', bookSource);
-    // hide delete message: You've deleted all the books...
+    // There is at least 1 book in the list - hide delete message (You've deleted all the books...)
     deleteMessage.classList.add('is-hidden');
     bookList.style.display = 'block';
     hideBooksForm.style.display = 'flex';
