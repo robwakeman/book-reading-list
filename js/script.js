@@ -1,7 +1,7 @@
 'use strict';
 
 // flag to determine which book source to use - 'hardcoded' or 'api' - default is api
-let bookSource = 'hardcoded';
+let bookSource = 'api';
 
 // save elements into constants
 const dataSourceSelect = document.getElementById('data-source-select');
