@@ -39,7 +39,8 @@ const initBookList = () => {
     bookList = document.getElementById('book-list-hardcoded');
   }
 
-  bookList.style.display = 'block';
+  showBookListAndHideBooksForm();
+
   books = bookList.getElementsByClassName('book-list__item');
   booksHidden = bookList.getElementsByClassName('book-list__item--is-hidden');
   // set up bookTitles as live HTMLCollection to enable search and add functions to work in combination
