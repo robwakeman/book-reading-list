@@ -27,12 +27,6 @@ const dataSourceSelectHandler = () => {
   checkAllBooksDeleted();
 };
 
-const hideMessages = () => {
-  // hide messages for search and delete
-  searchMessage.classList.add('is-hidden');
-  deleteMessage.classList.add('is-hidden');
-};
-
 const initBookList = () => {
   // hide both lists and show selected list conditionally below
   bookLists.forEach(list => {
@@ -58,7 +52,6 @@ const initBookList = () => {
     checkAllBooksDeleted();
   }
 
-  hideMessages();
   resetSearch();
 };
 
@@ -147,15 +140,12 @@ const addBook = e => {
 
 const booksShowingSearch = () => {
   searchMessage.classList.add('is-hidden');
-  bookList.style.display = 'block';
-  hideBooksForm.style.display = 'flex';
+  showBookListAndHideBooksForm();
 };
 
 const noBooksShowingSearch = () => {
   searchMessage.classList.remove('is-hidden');
-  // hide empty book list ul
-  bookList.style.display = 'none';
-  hideBooksForm.style.display = 'none';
+  hideBookListAndHideBooksForm();
 };
 
 const checkIfBooksShowing = () => {
@@ -163,6 +153,7 @@ const checkIfBooksShowing = () => {
     // show search message - no books found
     noBooksShowingSearch();
   } else {
+    // need to add conditional - if all books not deleted checkAllBooksDeleted
     booksShowingSearch();
   }
 };
@@ -186,6 +177,16 @@ const addHighLighting = () => {
   }
 };
 
+const showBookListAndHideBooksForm = () => {
+  bookList.style.display = 'block';
+  hideBooksForm.style.display = 'flex';
+};
+
+const hideBookListAndHideBooksForm = () => {
+  bookList.style.display = 'none';
+  hideBooksForm.style.display = 'none';
+};
+
 // check if all books have been deleted
 const checkAllBooksDeleted = () => {
   console.log('Num of books', Array.from(books).length);
@@ -193,9 +194,7 @@ const checkAllBooksDeleted = () => {
     console.log('All books deleted', bookSource);
     // show delete message: You've deleted all the books...
     deleteMessage.classList.remove('is-hidden');
-    // hide empty book list ul
-    bookList.style.display = 'none';
-    hideBooksForm.style.display = 'none';
+    hideBookListAndHideBooksForm();
   } else {
     console.log('There is at least 1 book in the list', bookSource);
     // hide delete message: You've deleted all the books...
