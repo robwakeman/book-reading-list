@@ -25,6 +25,7 @@ const dataSourceSelectHandler = () => {
   bookSource = dataSourceSelect.value;
   initBookList();
   checkAllBooksDeleted();
+  hideBooksInput.checked = false;
 };
 
 const initBookList = () => {
