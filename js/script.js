@@ -24,12 +24,7 @@ let booksHidden;
 const dataSourceSelectHandler = () => {
   bookSource = dataSourceSelect.value;
   initBookList();
-  if (Array.from(books).length === 0) {
-    bookList.style.display = 'none';
-    hideBooksForm.style.display = 'none';
-    // show delete message: You've deleted all the books...
-    deleteMessage.classList.remove('is-hidden');
-  }
+  checkAllBooksDeleted();
 };
 
 const hideMessages = () => {
