@@ -100,7 +100,6 @@ const getBooksOL = () => {
   });
 };
 
-// functions as function expressions (must be declared before being called)
 const searchBooks = () => {
   let searchTerm = search.value.toLowerCase();
 
