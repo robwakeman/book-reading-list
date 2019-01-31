@@ -65,7 +65,7 @@ const initBookList = () => {
 const getBooksOL = () => {
   // show loading spinner
   loader.classList.remove('is-hidden');
-  $.getJSON('http://openlibrary.org/subjects/crime.json?published_in=1840-1880&limit=5', data => {
+  $.getJSON('http://openlibrary.org/subjects/crimex.json?published_in=1840-1880&limit=5', data => {
     const booksFromApi = data.works; //array
 
     if (booksFromApi.length) {
@@ -90,11 +90,10 @@ const getBooksOL = () => {
       checkAllBooksDeleted();
     } else {
       // we don't have data
-      // hide api list
-      bookList.style.display = 'none';
+      hideBookListAndHideBooksForm();
       // show No Data message
       const noDataEl = document.createElement('P');
-      noDataEl.textContent = 'Sorry, there is currently no data.';
+      noDataEl.textContent = 'Sorry, there is currently no data from Open Library.';
       noDataEl.classList.add('books__no-data');
       bookList.parentElement.appendChild(noDataEl);
     }
