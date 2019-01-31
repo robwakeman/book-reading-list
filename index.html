@@ -32,8 +32,15 @@
           <p class="books__warning books__warning-delete">Please note: When a book is deleted, it is not retrievable unless you reload the page.</p>
           <p class="books__message books__message-search is-hidden">No books found. Please try searching for something else or add some books.</p>
           <p class="books__message books__message-delete is-hidden">You've deleted all the books from the API list. To add books, please use the Add button below.</p>
+          <!-- loading icon start  -->
+          <div class="loader is-hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50">
+              <path d="M43.935 25.145c0-10.318-8.364-18.683-18.683-18.683-10.318 0-18.683 8.365-18.683 18.683h4.068c0-8.071 6.543-14.615 14.615-14.615s14.615 6.543 14.615 14.615h4.068z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite" /></path>
+            </svg>
+          </div>
+          <!-- /.loader -->
           <ul id="book-list-api" class="book-list"></ul>
-          <ul id="book-list-hardcoded" class="book-list">
+          <ul id="book-list-hardcoded" class="book-list" style="display: none">
             <li id="HC1" class="book-list__item"><span class="book-list__title">High-Rise</span><button class="book-list__delete">Delete</button></li>
             <li id="HC2" class="book-list__item"><span class="book-list__title">Wuthering Heights</span><button class="book-list__delete">Delete</button></li>
             <li id="HC3" class="book-list__item"><span class="book-list__title">Heart of Darkness</span><button class="book-list__delete">Delete</button></li>

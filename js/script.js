@@ -13,6 +13,7 @@ const bookLists = document.querySelectorAll('.book-list');
 const bookListDeleteButtons = document.getElementsByClassName('book-list__delete'); // returns live HTMLCollection
 const hideBooksForm = document.getElementById('hide-books-form');
 const hideBooksInput = document.getElementById('hide-books-input');
+const loader = document.querySelector('.loader');
 
 // declare other variables
 let bookList;
@@ -27,6 +28,8 @@ const dataSourceSelectHandler = () => {
   checkAllBooksDeleted();
   hideBooksInput.checked = false;
 };
+
+// loader.classList.remove('is-hidden');
 
 const initBookList = () => {
   // if bookSource flag is set to hardcoded, set data source select field option to bookSource on page load
@@ -62,6 +65,8 @@ const initBookList = () => {
 
 // get data from Open Library API
 const getBooksOL = () => {
+  // show loading spinner
+  loader.classList.remove('is-hidden');
   $.getJSON('http://openlibrary.org/subjects/crime.json?published_in=1840-1880&limit=5', data => {
     const booksFromApi = data.works; //array
 
@@ -95,9 +100,14 @@ const getBooksOL = () => {
       noDataEl.classList.add('books__no-data');
       bookList.parentElement.appendChild(noDataEl);
     }
-  }).fail(() => {
-    console.log(jqxhr.responseText);
-  });
+  })
+    .fail(() => {
+      console.log(jqxhr.responseText);
+    })
+    .always(() => {
+      // hide loading spinner
+      loader.classList.add('is-hidden');
+    });
 };
 
 const searchBooks = () => {
@@ -180,11 +190,13 @@ const addHighLighting = () => {
 };
 
 const showBookListAndHideBooksForm = () => {
+  // TODO: change to css class remove is-hidden
   bookList.style.display = 'block';
   hideBooksForm.style.display = 'flex';
 };
 
 const hideBookListAndHideBooksForm = () => {
+  // TODO: change to css class add is-hidden
   bookList.style.display = 'none';
   hideBooksForm.style.display = 'none';
 };

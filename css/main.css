@@ -304,6 +304,27 @@ p {
   -webkit-appearance: none; /* iOS 12.1.3 safari 12 fix */
 }
 
+/*----------------------- Loading Icon Styles ------------------------------ */
+
+/* .loader {
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1rem;
+  margin: 0 auto 1rem;
+  display: inline-block;
+  vertical-align: top;
+} */
+
+/*
+  Set the color of the icon
+*/
+svg path,
+svg rect {
+  fill: #ff6700;
+}
+
 /*----------------------- Utility Styles ------------------------------ */
 
 .is-hidden {
