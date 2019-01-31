@@ -29,8 +29,6 @@ const dataSourceSelectHandler = () => {
   hideBooksInput.checked = false;
 };
 
-// loader.classList.remove('is-hidden');
-
 const initBookList = () => {
   // if bookSource flag is set to hardcoded, set data source select field option to bookSource on page load
   dataSourceSelect.value = bookSource;
