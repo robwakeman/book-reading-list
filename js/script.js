@@ -62,7 +62,7 @@ const initBookList = () => {
 
 // get data from Open Library API
 const getBooksOL = () => {
-  $.getJSON('http://openlibrary.org/subjects/crime.json?published_in=1840-1880&limit=5', function(data) {
+  $.getJSON('http://openlibrary.org/subjects/crime.json?published_in=1840-1880&limit=5', data => {
     const booksFromApi = data.works; //array
 
     if (booksFromApi.length) {
@@ -95,7 +95,7 @@ const getBooksOL = () => {
       noDataEl.classList.add('books__no-data');
       bookList.parentElement.appendChild(noDataEl);
     }
-  }).fail(function() {
+  }).fail(() => {
     console.log(jqxhr.responseText);
   });
 };
