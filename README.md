@@ -4,7 +4,7 @@
 
 Book reading list app.
 
-[Demo](http://robwakemandev.com/book-reading-list/)
+[Demo](http://dev.robwakeman.com/book-reading-list/)
 
 This app is a demo of some of my coding practices:
 
