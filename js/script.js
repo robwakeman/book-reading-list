@@ -188,15 +188,13 @@ const addHighLighting = () => {
 };
 
 const showBookListAndHideBooksForm = () => {
-  // TODO: change to css class remove is-hidden
-  bookList.style.display = 'block';
-  hideBooksForm.style.display = 'flex';
+  bookList.classList.remove('is-hidden');
+  hideBooksForm.classList.remove('is-hidden');
 };
 
 const hideBookListAndHideBooksForm = () => {
-  // TODO: change to css class add is-hidden
-  bookList.style.display = 'none';
-  hideBooksForm.style.display = 'none';
+  bookList.classList.add('is-hidden');
+  hideBooksForm.classList.add('is-hidden');
 };
 
 // check if all books have been deleted
