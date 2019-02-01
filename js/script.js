@@ -162,7 +162,6 @@ const checkIfBooksShowing = () => {
     // show search message - no books found
     noBooksShowingSearch();
   } else {
-    // need to add conditional - if all books not deleted, i.e. using the checkAllBooksDeleted fn
     booksShowingSearch();
   }
 };
