@@ -35,7 +35,6 @@ const initBookList = () => {
 
   // hide both lists and show selected list conditionally below
   bookLists.forEach(list => {
-    // list.style.display = 'none';
     list.classList.add('is-hidden');
   });
 
@@ -205,9 +204,7 @@ const checkAllBooksDeleted = () => {
   } else {
     // There is at least 1 book in the list - hide delete message (You've deleted all the books...)
     deleteMessage.classList.add('is-hidden');
-    // bookList.style.display = 'block';
     bookList.classList.remove('is-hidden');
-    // hideBooksForm.style.display = 'flex';
     hideBooksForm.classList.remove('is-hidden');
   }
 };
@@ -221,10 +218,8 @@ const deleteBook = e => {
 
 const hideBooksInputHandler = () => {
   if (hideBooksInput.checked) {
-    // bookList.style.display = 'none';
     bookList.classList.add('is-hidden');
   } else {
-    // bookList.style.display = 'block';
     bookList.classList.remove('is-hidden');
   }
 };
