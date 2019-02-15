@@ -153,7 +153,11 @@ const booksShowingSearch = () => {
 };
 
 const noBooksShowingSearch = () => {
-  searchMessage.classList.remove('is-hidden');
+  // only show search message if all books not deleted, i.e. if checkAllBooksDeleted is false
+  if (!checkAllBooksDeleted()) {
+    searchMessage.classList.remove('is-hidden');
+  }
+
   hideBookListAndHideBooksForm();
 };
 
@@ -201,11 +205,13 @@ const checkAllBooksDeleted = () => {
     // All books deleted - show delete message (You've deleted all the books...)
     deleteMessage.classList.remove('is-hidden');
     hideBookListAndHideBooksForm();
+    return true;
   } else {
     // There is at least 1 book in the list - hide delete message (You've deleted all the books...)
     deleteMessage.classList.add('is-hidden');
     bookList.classList.remove('is-hidden');
     hideBooksForm.classList.remove('is-hidden');
+    return false;
   }
 };
 
