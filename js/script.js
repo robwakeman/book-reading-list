@@ -153,7 +153,7 @@ const booksShowingSearch = () => {
 };
 
 const noBooksShowingSearch = () => {
-  // only show search message if all books not deleted, i.e. if checkAllBooksDeleted is false
+  // only show search message if not all books have been deleted, i.e. if checkAllBooksDeleted is false
   if (!checkAllBooksDeleted()) {
     searchMessage.classList.remove('is-hidden');
   }
