@@ -27,6 +27,7 @@ const dataSourceSelectHandler = () => {
   initBookList();
   checkAllBooksDeleted();
   hideBooksInput.checked = false;
+  loader.classList.add('is-hidden');
 };
 
 const initBookList = () => {
