@@ -6,6 +6,7 @@ let bookSource = 'api';
 // save elements into constants
 const dataSourceSelect = document.getElementById('data-source-select');
 const search = document.getElementById('search');
+const apiNoBooksMessage = document.querySelector('.books__message-api-no-books');
 const searchMessage = document.querySelector('.books__message-search');
 const deleteMessage = document.querySelector('.books__message-delete');
 const addBookForm = document.getElementById('addBookForm');
@@ -71,6 +72,7 @@ const getBooksOL = () => {
 
     if (booksFromApi.length) {
       // there are books
+      apiNoBooksMessage.classList.add('is-hidden');
 
       const booksOpenLib = booksFromApi.map(book => {
         return {
@@ -92,11 +94,8 @@ const getBooksOL = () => {
     } else {
       // we don't have data
       hideBookListAndHideBooksForm();
-      // show No Data message
-      const noDataEl = document.createElement('P');
-      noDataEl.textContent = 'Sorry, there is currently no data from Open Library.';
-      noDataEl.classList.add('books__no-data');
-      bookList.parentElement.appendChild(noDataEl);
+      // show api no books message
+      apiNoBooksMessage.classList.remove('is-hidden');
     }
   })
     .fail(() => {
