@@ -67,7 +67,7 @@ const initBookList = () => {
 const getBooksOL = () => {
   // show loading spinner
   loader.classList.remove('is-hidden');
-  $.getJSON('http://openlibrary.org/subjects/crimex.json?published_in=1840-1880&limit=5', data => {
+  $.getJSON('http://openlibrary.org/subjects/crime.json?published_in=1840-1880&limit=5', data => {
     const booksFromApi = data.works; //array
 
     if (booksFromApi.length) {
