@@ -67,7 +67,7 @@ const initBookList = () => {
 const getBooksOL = () => {
   // show loading spinner
   loader.classList.remove('is-hidden');
-  $.getJSON('http://openlibrary.org/subjects/crime.json?published_in=1840-1880&limit=5', data => {
+  $.getJSON('http://openlibrary.org/subjects/crimex.json?published_in=1840-1880&limit=5', data => {
     const booksFromApi = data.works; //array
 
     if (booksFromApi.length) {
@@ -77,7 +77,7 @@ const getBooksOL = () => {
       const booksOpenLib = booksFromApi.map(book => {
         return {
           bookOpenLibId: book.cover_edition_key,
-          bookOpenLibTitle: book.title
+          bookOpenLibTitle: book.title,
         };
       });
 
@@ -98,8 +98,11 @@ const getBooksOL = () => {
       apiNoBooksMessage.classList.remove('is-hidden');
     }
   })
-    .fail(() => {
-      console.log(jqxhr.responseText);
+    .done(() => {
+      console.log('Open Library request completed');
+    })
+    .fail(e => {
+      console.error(e);
     })
     .always(() => {
       // hide loading spinner
