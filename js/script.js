@@ -83,7 +83,7 @@ const getBooksOL = () => {
 
       if (booksOpenLib.length) {
         booksOpenLibHtml = booksOpenLib.map(book => {
-          return '<li id="' + book.bookOpenLibId + '" class="book-list__item"><span class="book-list__title">' + book.bookOpenLibTitle + '</span><button class="book-list__delete">Delete</button></li>';
+          return `<li id="${book.bookOpenLibId}" class="book-list__item"><span class="book-list__title">${book.bookOpenLibTitle}</span><button class="book-list__delete">Delete</button></li>`;
         });
       }
 
