@@ -20,6 +20,7 @@ This app is a demo of some of my coding practices:
   - If used in a production context, Autoprefixer and minification would be used. Ensure Autoprefixer Grid settings are set to true either via JS or [control comments](https://css-tricks.com/css-grid-in-ie-duplicate-area-names-now-supported/#article-header-id-10)
 - **JavaScript**
   - The app uses both vanilla JavaScript and jQuery.
+  - Data consumption is achieved with jQuery's getJSON method. The Fetch API would be an alternative, but Fetch and Promise polyfills might be required. See [About > JavaScript section](https://github.com/robwakeman/fetch-sandbox) in Fetch API Sandbox.
   - ES6 (ES2015) is used e.g. const, let, arrow functions, for..of loops.
   - If used in a production context, Babel would be used to compile the JavaScript down to ES5 and then optimised using a tool like UglifyJS.
   - Any changed data is not persistent.
