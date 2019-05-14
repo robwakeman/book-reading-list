@@ -187,8 +187,8 @@ const resetSearch = () => {
 
 const addHighLighting = () => {
   for (let deleteButton of bookListDeleteButtons) {
-    deleteButton.addEventListener('mouseenter', e => e.target.parentElement.classList.toggle('book-list__item--is-hovered'));
-    deleteButton.addEventListener('mouseleave', e => e.target.parentElement.classList.toggle('book-list__item--is-hovered'));
+    deleteButton.addEventListener('mouseenter', e => e.target.parentElement.classList.add('book-list__item--is-hovered'));
+    deleteButton.addEventListener('mouseleave', e => e.target.parentElement.classList.remove('book-list__item--is-hovered'));
   }
 };
 
