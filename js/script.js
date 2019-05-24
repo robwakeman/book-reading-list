@@ -108,12 +108,15 @@ function getBooksOLFetch() {
         addHighLighting();
         checkAllBooksDeleted();
       } else {
-        // we don't have data
+        // there are no books
         hideBookListAndHideBooksForm();
         // show api no books message
         apiNoBooksMessage.classList.remove('is-hidden');
       }
     })
+    // this .catch fires if no connection (logs in console: 'Catch Error TypeError: Failed to fetch')
+    // this .catch fires if hostname is incorrect e.g. http://openlibraryxxx.org/subjects/crime.json?published_in=1840-1880&limit=5
+    // this .catch DOES NOT fire if URL not found e.g. http://openlibrary.org/subjects/crimexxx.json?published_in=1840-1880&limit=5
     .catch(err => console.log('Catch Error', err));
 }
 
