@@ -122,53 +122,6 @@ function getBooksOLFetch() {
     .catch(err => console.log('Catch Error', err));
 }
 
-// get data from Open Library API
-const getBooksOL = () => {
-  // show loading spinner
-  loader.classList.remove('is-hidden');
-  $.getJSON('http://openlibrary.org/subjects/crime.json?published_in=1840-1880&limit=5', data => {
-    const booksFromApi = data.works; //array
-
-    if (booksFromApi.length) {
-      // there are books
-      apiNoBooksMessage.classList.add('is-hidden');
-
-      const booksOpenLib = booksFromApi.map(book => {
-        return {
-          bookOpenLibId: book.cover_edition_key,
-          bookOpenLibTitle: book.title,
-        };
-      });
-
-      if (booksOpenLib.length) {
-        booksOpenLibHtml = booksOpenLib.map(book => {
-          return `<li id="${book.bookOpenLibId}" class="book-list__item"><span class="book-list__title">${book.bookOpenLibTitle}</span><button class="book-list__delete">Delete</button></li>`;
-        });
-      }
-
-      // booksOpenLibHtml is an array, so need to convert it to a string with join
-      bookList.innerHTML += booksOpenLibHtml.join('');
-      addHighLighting();
-      checkAllBooksDeleted();
-    } else {
-      // we don't have data
-      hideBookListAndHideBooksForm();
-      // show api no books message
-      apiNoBooksMessage.classList.remove('is-hidden');
-    }
-  })
-    .done(() => {
-      console.log('Open Library request completed');
-    })
-    .fail(e => {
-      console.error(e);
-    })
-    .always(() => {
-      // hide loading spinner
-      loader.classList.add('is-hidden');
-    });
-};
-
 const searchBooks = () => {
   let searchTerm = search.value.toLowerCase();
 
