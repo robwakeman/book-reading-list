@@ -71,7 +71,7 @@ function handleErrors(res) {
   return res;
 }
 
-function getBooksOLFetch() {
+function getBooksOL() {
   // show loading spinner
   loader.classList.remove('is-hidden');
   // do fetch
@@ -247,8 +247,7 @@ const hideBooksInputHandler = () => {
 
 if (bookSource === 'api') {
   // get books from Open Library
-  // getBooksOL();
-  getBooksOLFetch();
+  getBooksOL();
 }
 
 initBookList();
