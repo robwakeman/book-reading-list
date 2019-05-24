@@ -79,6 +79,8 @@ function getBooksOLFetch() {
     .then(handleErrors)
     .then(res => res.json())
     .then(data => {
+      // hide loading spinner
+      loader.classList.add('is-hidden');
       // do sth with data
       console.log(data.works);
       // copied from getBooksOL
@@ -105,8 +107,6 @@ function getBooksOLFetch() {
         bookList.innerHTML += booksOpenLibHtml.join('');
         addHighLighting();
         checkAllBooksDeleted();
-        // hide loading spinner
-        loader.classList.add('is-hidden');
       } else {
         // we don't have data
         hideBookListAndHideBooksForm();
