@@ -75,7 +75,6 @@ function getBooksOLFetch() {
   // show loading spinner
   loader.classList.remove('is-hidden');
   // do fetch
-  console.log('inside getBooksOLFetch fn');
   fetch('http://openlibrary.org/subjects/crime.json?published_in=1840-1880&limit=5')
     .then(handleErrors)
     .then(res => res.json())
