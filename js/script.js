@@ -114,9 +114,11 @@ function getBooksOLFetch() {
         apiNoBooksMessage.classList.remove('is-hidden');
       }
     })
-    // this .catch fires if no connection (logs in console: 'Catch Error TypeError: Failed to fetch')
-    // this .catch fires if hostname is incorrect e.g. http://openlibraryxxx.org/subjects/crime.json?published_in=1840-1880&limit=5
-    // this .catch DOES NOT fire if URL not found e.g. http://openlibrary.org/subjects/crimexxx.json?published_in=1840-1880&limit=5
+    // this .catch DOES fire if there is no connection (console.log: 'Catch Error TypeError: Failed to fetch')
+    // this .catch DOES fire if hostname is incorrect e.g. http://openlibraryxxx.org/subjects/crime.json?published_in=1840-1880&limit=5 (console.log: Catch Error TypeError: Failed to fetch)
+    // this .catch DOES fire if URL is incorrect in this way http://openlibrary.org/subjectsxxx/crime.json?published_in=1840-1880&limit=5 (console.log: Catch Error Error: Not Found)
+    // this .catch DOES NOT fire if URL is incorrect in this way e.g. http://openlibrary.org/subjects/crimexxx.json?published_in=1840-1880&limit=5
+    // this .catch DOES fire if URL is incorrect in this way http://openlibrary.org/subjects/crime.jsonxxx?published_in=1840-1880&limit=5 (console.log: Catch Error TypeError: Failed to fetch)
     .catch(err => console.log('Catch Error', err));
 }
 
