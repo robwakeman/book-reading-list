@@ -71,9 +71,9 @@ p {
 /*----------------------- Header Styles ------------------------------ */
 
 .header {
-  padding: 2rem 1rem 1rem;
-  margin-block-end: 1rem;
-  -webkit-margin-after: 1rem; /* for safari */
+  padding: 2em 1em 1em;
+  margin-block-end: 1em;
+  -webkit-margin-after: 1em; /* for safari */
   background: #f5f5f5;
   display: grid;
   justify-items: center;
@@ -82,10 +82,10 @@ p {
 /*----------------------- Select Data Styles ------------------------------ */
 
 .data-source-container {
-  margin-block-start: 1.5rem;
-  -webkit-margin-before: 1.5rem; /* for safari */
-  margin-block-end: 1.5rem;
-  -webkit-margin-after: 1.5rem; /* for safari */
+  margin-block-start: 1.5em;
+  -webkit-margin-befoe: 1.5em; /* for safari */
+  margin-block-end: 1.5em;
+  -webkit-margin-after: 1.5em; /* for safari */
 }
 
 .data-source__form > * {
@@ -95,8 +95,8 @@ p {
 .data-source__label {
   margin-inline-end: 0;
   -webkit-margin-end: 0; /* for safari */
-  margin-block-end: 0.3rem;
-  -webkit-margin-after: 0.3rem; /* for safari */
+  margin-block-end: 0.3em;
+  -webkit-margin-after: 0.3em; /* for safari */
 }
 
 @media (min-width: 500px) {
@@ -106,8 +106,8 @@ p {
   }
 
   .data-source__label {
-    margin-inline-end: 0.75rem;
-    -webkit-margin-end: 0.75rem; /* for safari */
+    margin-inline-end: 0.75em;
+    -webkit-margin-end: 0.75em; /* for safari */
     margin-block-end: 0;
     -webkit-margin-after: 0; /* for safari */
   }
@@ -119,8 +119,8 @@ p {
   border: none;
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 0.3rem;
-  padding-right: 2rem;
+  padding: 0.3em;
+  padding-right: 2em;
   cursor: pointer;
 
   /* Removes the default <select> styling */
@@ -138,8 +138,8 @@ p {
 
 .search {
   width: 100%;
-  margin-block-end: 1.5rem;
-  -webkit-margin-after: 1.5rem; /* for safari */
+  margin-block-end: 1.5em;
+  -webkit-margin-after: 1.5em; /* for safari */
 }
 
 @media (min-width: 600px) {
@@ -150,7 +150,7 @@ p {
 
 .search__field {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.5em;
   border: none;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -159,7 +159,7 @@ p {
 /*----------------------- Book List Styles ------------------------------ */
 
 .books {
-  padding: 1rem;
+  padding: 1em;
 }
 
 .books__inner {
@@ -170,19 +170,19 @@ p {
 .books__warning {
   color: #856404;
   background: #fff3cd;
-  padding: 1rem 1.4rem;
+  padding: 1em 1.4em;
   border-radius: 5px;
-  margin-block-end: 2.5rem;
-  -webkit-margin-after: 2.5rem; /* for safari */
+  margin-block-end: 2.5em;
+  -webkit-margin-after: 2.5em; /* for safari */
 }
 
 .books__message {
   color: purple;
   background: rgba(128, 0, 128, 0.192);
-  padding: 1rem 1.4rem;
+  padding: 1em 1.4em;
   border-radius: 5px;
-  margin-block-end: 2.5rem;
-  -webkit-margin-after: 2.5rem; /* for safari */
+  margin-block-end: 2.5em;
+  -webkit-margin-after: 2.5em; /* for safari */
 }
 
 .books__message.books__message--is-hidden {
@@ -190,8 +190,8 @@ p {
 }
 
 .book-list {
-  margin-block-end: 2.5rem;
-  -webkit-margin-after: 2.5rem; /* for safari */
+  margin-block-end: 2.5em;
+  -webkit-margin-after: 2.5em; /* for safari */
   padding: 0;
   list-style-type: none;
   overflow: auto;
@@ -201,8 +201,8 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-block-end: 1.3rem;
-  -webkit-margin-after: 1.3rem; /* for safari */
+  margin-block-end: 1.3em;
+  -webkit-margin-after: 1.3em; /* for safari */
   border-left: 5px solid #ddd;
 }
 
@@ -215,13 +215,13 @@ p {
 }
 
 .book-list__title {
-  padding: 1rem;
+  padding: 1em;
 }
 
 .book-list__delete {
   background: purple;
   color: white;
-  padding: 0.3rem 0.5rem;
+  padding: 0.3em 0.5em;
   margin: 8px;
   cursor: pointer;
   border: none;
@@ -233,8 +233,8 @@ p {
 }
 
 .books__no-data {
-  margin-block-end: 2.5rem;
-  -webkit-margin-after: 2.5rem;
+  margin-block-end: 2.5em;
+  -webkit-margin-after: 2.5em;
 }
 
 /*----------------------- Hide Books Styles ------------------------------ */
@@ -243,8 +243,8 @@ p {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  margin-block-end: 2rem;
-  -webkit-margin-after: 2rem; /* for safari */
+  margin-block-end: 2em;
+  -webkit-margin-after: 2em; /* for safari */
 }
 
 .hide-books {
@@ -257,15 +257,15 @@ p {
 }
 
 .hide-books__input {
-  margin-inline-end: 0.5rem;
-  -webkit-margin-end: 0.5rem; /* for safari */
+  margin-inline-end: 0.5em;
+  -webkit-margin-end: 0.5em; /* for safari */
 }
 
 /*----------------------- Add Book Styles ------------------------------ */
 
 .add-book {
-  margin-block-end: 1rem;
-  -webkit-margin-after: 1rem; /* for safari */
+  margin-block-end: 1em;
+  -webkit-margin-after: 1em; /* for safari */
 }
 
 .add-book__inner {
@@ -285,7 +285,7 @@ p {
 
 .add-book__title {
   flex: 1 1 80%;
-  padding: 0.5rem;
+  padding: 0.5em;
   border: 1px solid #ddd;
   border-right: 0;
   border-top-left-radius: 5px;
@@ -311,8 +311,8 @@ p {
   height: 100px;
   width: 20%;
   text-align: center;
-  padding: 1rem;
-  margin: 0 auto 1rem;
+  padding: 1em;
+  margin: 0 auto 1em;
   display: inline-block;
   vertical-align: top;
 } */
